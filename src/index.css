@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-editorial: 'Instrument Serif', Georgia, serif;
+
+  --color-canvas: #08080B;
+  --color-surface-subtle: #101016;
+  --color-surface-elevated: #171720;
+  --color-accent-violet: #B65CFF;
+  --color-accent-lavender: #D0A0FF;
+  --color-text-primary: #F5F3F8;
+  --color-text-secondary: #A5A2B2;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #08080B;
+    color: #F5F3F8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle architectural grid pattern */
+.bg-grid-subtle {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(245, 243, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 243, 248, 0.03) 1px, transparent 1px);
+}
+
+/* Restrained ambient glow */
+.glow-violet {
+  background: radial-gradient(circle, rgba(182, 92, 255, 0.12) 0%, rgba(8, 8, 11, 0) 70%);
+}
+
+.glow-violet-sharp {
+  box-shadow: 0 0 25px -5px rgba(182, 92, 255, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08080B;
+}
+::-webkit-scrollbar-thumb {
+  background: #232332;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B65CFF;
+}
