@@ -2,6 +2,7 @@ import React from 'react';
 import { Project } from '../types';
 import { PROJECTS } from '../data/projects';
 import { ProjectMockupFrame } from '../components/portfolio/ProjectMockupFrame';
+import { ScrollReveal } from '../components/common/ScrollReveal';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -39,7 +40,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
           <button
             type="button"
             onClick={() => onNavigate('/work')}
-            className="inline-flex items-center gap-2 text-xs font-mono text-[#A5A2B2] hover:text-[#B65CFF] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono text-[#A5A2B2] hover:text-[#B65CFF] hover:-translate-x-0.5 transition-all cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>BACK TO SELECTED WORK</span>
@@ -47,7 +48,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
         </div>
 
         {/* Hero Section of Case Study */}
-        <div className="border-b border-[#F5F3F8]/10 pb-12 mb-16">
+        <ScrollReveal className="border-b border-[#F5F3F8]/10 pb-12 mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="text-xs font-mono text-[#B65CFF] tracking-widest uppercase font-semibold">
               {project.categoryLabel}
@@ -76,10 +77,10 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-xl bg-[#F5F3F8] hover:bg-[#B65CFF] text-black font-bold text-xs tracking-wider inline-flex items-center gap-2 transition-all shadow-lg cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-[#F5F3F8] hover:bg-[#B65CFF] text-black font-bold text-xs tracking-wider inline-flex items-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 shadow-lg cursor-pointer group/live"
             >
               <span>VIEW LIVE WEBSITE</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5" />
             </a>
 
             {project.socialLinks && project.socialLinks.map((s) => (
@@ -88,7 +89,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-3 rounded-xl bg-[#101016] hover:bg-[#1A1A24] border border-[#F5F3F8]/10 text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors inline-flex items-center gap-1.5"
+                className="px-4 py-3 rounded-xl bg-[#101016] hover:bg-[#1A1A24] border border-[#F5F3F8]/10 text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] hover:scale-[1.02] active:scale-[0.98] transition-all inline-flex items-center gap-1.5"
               >
                 <span>{s.label}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -115,15 +116,15 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
               <span className="text-[#B65CFF] font-semibold">{project.conceptLabel}</span>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Primary Visual Hero Mockup */}
-        <div className="mb-20">
+        <ScrollReveal className="mb-20">
           <ProjectMockupFrame project={project} />
-        </div>
+        </ScrollReveal>
 
         {/* 1. Background & Creative Challenge */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16 border-b border-[#F5F3F8]/10 items-start">
+        <ScrollReveal className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16 border-b border-[#F5F3F8]/10 items-start">
           <div className="lg:col-span-4">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               01 // THE CHALLENGE
@@ -140,10 +141,10 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
               Our initial diagnostic revealed that competing brands in this sector relied heavily on cookie-cutter patterns and unoptimized scripts, introducing cognitive drag and high bounce rates during initial discovery.
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 2. Creative Direction & The Solution */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16 border-b border-[#F5F3F8]/10 items-start">
+        <ScrollReveal className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16 border-b border-[#F5F3F8]/10 items-start">
           <div className="lg:col-span-4">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               02 // THE STRATEGY
@@ -171,160 +172,165 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 3. Typography & Color Architecture */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-12">
-            <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
-              03 // DESIGN SYSTEM
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
-              Chromatic & Typographic Tokens
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Color Palette Tokens */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5">
-              <div className="flex items-center gap-2 mb-6">
-                <Palette className="w-4 h-4 text-[#B65CFF]" />
-                <h3 className="text-sm font-bold text-[#F5F3F8] uppercase tracking-wider">
-                  Curated Palette
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {project.colorPalette.map((color) => (
-                  <div key={color.hex} className="flex flex-col gap-2">
-                    <div 
-                      className="h-16 rounded-xl border border-white/10 shadow-inner"
-                      style={{ backgroundColor: color.hex }}
-                    />
-                    <div>
-                      <span className="text-xs font-mono text-[#F5F3F8] block font-semibold">{color.hex}</span>
-                      <span className="text-[10px] text-[#A5A2B2]">{color.name}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        <ScrollReveal>
+          <div className="py-16 border-b border-[#F5F3F8]/10">
+            <div className="mb-12">
+              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
+                03 // DESIGN SYSTEM
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
+                Chromatic & Typographic Tokens
+              </h2>
             </div>
 
-            {/* Typography Tokens */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5">
-              <div className="flex items-center gap-2 mb-6">
-                <Type className="w-4 h-4 text-[#B65CFF]" />
-                <h3 className="text-sm font-bold text-[#F5F3F8] uppercase tracking-wider">
-                  Typographic Hierarchy
-                </h3>
-              </div>
-              <div className="space-y-4">
-                {project.typography.map((t) => (
-                  <div key={t.role} className="flex items-start justify-between border-b border-white/5 pb-3">
-                    <div>
-                      <span className="text-xs font-bold text-[#F5F3F8] block">{t.family}</span>
-                      <span className="text-[11px] text-[#A5A2B2]">{t.description}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Color Palette Tokens */}
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/30 transition-all duration-300">
+                <div className="flex items-center gap-2 mb-6">
+                  <Palette className="w-4 h-4 text-[#B65CFF]" />
+                  <h3 className="text-sm font-bold text-[#F5F3F8] uppercase tracking-wider">
+                    Curated Palette
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {project.colorPalette.map((color) => (
+                    <div key={color.hex} className="flex flex-col gap-2 group/color">
+                      <div 
+                        className="h-16 rounded-xl border border-white/10 shadow-inner transition-transform duration-200 group-hover/color:scale-105"
+                        style={{ backgroundColor: color.hex }}
+                      />
+                      <div>
+                        <span className="text-xs font-mono text-[#F5F3F8] block font-semibold">{color.hex}</span>
+                        <span className="text-[10px] text-[#A5A2B2]">{color.name}</span>
+                      </div>
                     </div>
-                    <span className="text-[10px] font-mono text-[#B65CFF] uppercase shrink-0">
-                      {t.role}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Typography Tokens */}
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/30 transition-all duration-300">
+                <div className="flex items-center gap-2 mb-6">
+                  <Type className="w-4 h-4 text-[#B65CFF]" />
+                  <h3 className="text-sm font-bold text-[#F5F3F8] uppercase tracking-wider">
+                    Typographic Hierarchy
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {project.typography.map((t) => (
+                    <div key={t.role} className="flex items-start justify-between border-b border-white/5 pb-3">
+                      <div>
+                        <span className="text-xs font-bold text-[#F5F3F8] block">{t.family}</span>
+                        <span className="text-[11px] text-[#A5A2B2]">{t.description}</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-[#B65CFF] uppercase shrink-0">
+                        {t.role}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 4. Visual Highlights & Responsive Viewports */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-12">
+        <section className="py-16 border-b border-[#F5F3F8]/10">
+          <ScrollReveal className="mb-12">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               04 // FEATURE DEEP DIVE
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
               Interactive Viewports & Micro-States
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {project.visualHighlights.map((hl, i) => (
-              <div 
-                key={hl.title}
-                className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-[#B65CFF]">
-                      MODULE // 0{i + 1}
-                    </span>
-                    {hl.mockupType === 'mobile-device' ? (
-                      <Smartphone className="w-4 h-4 text-neutral-400" />
-                    ) : (
-                      <Laptop className="w-4 h-4 text-neutral-400" />
-                    )}
+              <ScrollReveal key={hl.title} delay={i * 80}>
+                <div 
+                  className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/30 transition-all duration-300 flex flex-col justify-between h-full"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono text-[#B65CFF]">
+                        MODULE // 0{i + 1}
+                      </span>
+                      {hl.mockupType === 'mobile-device' ? (
+                        <Smartphone className="w-4 h-4 text-neutral-400" />
+                      ) : (
+                        <Laptop className="w-4 h-4 text-neutral-400" />
+                      )}
+                    </div>
+                    <h4 className="text-lg font-bold text-[#F5F3F8] mb-2">
+                      {hl.title}
+                    </h4>
+                    <p className="text-xs text-[#A5A2B2] leading-relaxed">
+                      {hl.description}
+                    </p>
                   </div>
-                  <h4 className="text-lg font-bold text-[#F5F3F8] mb-2">
-                    {hl.title}
-                  </h4>
-                  <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                    {hl.description}
-                  </p>
+                  <div className="mt-6 pt-4 border-t border-white/5 text-[10px] font-mono text-neutral-500 uppercase">
+                    Fully Responsive · 60 FPS
+                  </div>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/5 text-[10px] font-mono text-neutral-500 uppercase">
-                  Fully Responsive · 60 FPS
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* 5. Next Project Navigation & Conversion CTA */}
-        <div className="pt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <div className="lg:col-span-6 p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-[#A5A2B2] block mb-1">
-                NEXT CASE STUDY
-              </span>
-              <h3 className="text-2xl font-bold text-[#F5F3F8] tracking-tight mb-2">
-                {nextProject.title}
-              </h3>
-              <p className="text-xs text-[#A5A2B2] line-clamp-2 mb-6">
-                {nextProject.tagline}
-              </p>
+        <ScrollReveal>
+          <div className="pt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div className="lg:col-span-6 p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/30 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <span className="text-xs font-mono text-[#A5A2B2] block mb-1">
+                  NEXT CASE STUDY
+                </span>
+                <h3 className="text-2xl font-bold text-[#F5F3F8] tracking-tight mb-2 group-hover:text-[#B65CFF] transition-colors">
+                  {nextProject.title}
+                </h3>
+                <p className="text-xs text-[#A5A2B2] line-clamp-2 mb-6">
+                  {nextProject.tagline}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => onOpenProject(nextProject.slug)}
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#B65CFF] hover:text-[#D0A0FF] hover:translate-x-1 transition-all cursor-pointer"
+              >
+                <span>EXPLORE CASE STUDY</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => onOpenProject(nextProject.slug)}
-              className="inline-flex items-center gap-2 text-xs font-semibold text-[#B65CFF] hover:text-[#D0A0FF] transition-colors"
-            >
-              <span>EXPLORE CASE STUDY</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
 
-          <div className="lg:col-span-6 p-8 rounded-3xl bg-[#12121A] border border-[#B65CFF]/30 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-[#B65CFF] block mb-1 uppercase font-semibold">
-                BUILD A SIMILAR EXPERIENCE
-              </span>
-              <h3 className="text-2xl font-bold text-[#F5F3F8] tracking-tight mb-2">
-                Ready to elevate your digital presence?
-              </h3>
-              <p className="text-xs text-[#A5A2B2] mb-6">
-                Let's discuss how Formora can architect a bespoke digital flagship or brand campaign for your company.
-              </p>
+            <div className="lg:col-span-6 p-8 rounded-3xl bg-[#12121A] border border-[#B65CFF]/30 flex flex-col justify-between group">
+              <div>
+                <span className="text-xs font-mono text-[#B65CFF] block mb-1 uppercase font-semibold">
+                  BUILD A SIMILAR EXPERIENCE
+                </span>
+                <h3 className="text-2xl font-bold text-[#F5F3F8] tracking-tight mb-2">
+                  Ready to elevate your digital presence?
+                </h3>
+                <p className="text-xs text-[#A5A2B2] mb-6">
+                  Let's discuss how Formora can architect a bespoke digital flagship or brand campaign for your company.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => onNavigate('/contact')}
+                className="px-6 py-3.5 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 rounded-xl transition-all duration-200 shadow-md self-start flex items-center gap-2 cursor-pointer group/cta"
+              >
+                <span>INQUIRE ABOUT THIS DISCIPLINE</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover/cta:translate-x-1" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => onNavigate('/contact')}
-              className="px-6 py-3.5 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] rounded-xl transition-all shadow-md self-start flex items-center gap-2"
-            >
-              <span>INQUIRE ABOUT THIS DISCIPLINE</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
 
-        </div>
+          </div>
+        </ScrollReveal>
 
       </div>
     </div>

@@ -15,8 +15,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [navMounted, setNavMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    setNavMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -47,6 +49,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          navMounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+        } ${
           isScrolled
             ? 'bg-[#08080B]/90 backdrop-blur-md border-b border-[#F5F3F8]/10 py-3 shadow-2xl'
             : 'bg-transparent py-5 border-b border-transparent'
@@ -59,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => handleLinkClick('/')}
-            className="group flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF] rounded-md transition-opacity hover:opacity-90"
+            className="group flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF] rounded-md transition-all duration-200 hover:opacity-90 active:scale-[0.99] cursor-pointer"
             aria-label="Formora Home"
           >
             <FormoraLogo variant="horizontal" size="sm" showStudioLabel={false} />
@@ -74,15 +78,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={link.path}
                   type="button"
                   onClick={() => handleLinkClick(link.path)}
-                  className={`relative py-1 text-sm tracking-wide transition-colors whitespace-nowrap shrink-0 ${
+                  className={`relative py-1 text-sm tracking-wide transition-colors duration-200 whitespace-nowrap shrink-0 group cursor-pointer ${
                     active
                       ? 'text-[#F5F3F8] font-semibold'
                       : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  {link.label}
-                  {active && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B65CFF] rounded-full" />
+                  <span>{link.label}</span>
+                  {active ? (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B65CFF] rounded-full shadow-[0_0_8px_rgba(182,92,255,0.6)]" />
+                  ) : (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B65CFF] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
                   )}
                 </button>
               );
@@ -94,17 +100,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onStartProject}
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-lg transition-all duration-200 shadow-md whitespace-nowrap shrink-0 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF]"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 rounded-lg transition-all duration-200 shadow-md whitespace-nowrap shrink-0 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF]"
             >
               <span>START A PROJECT</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
 
             {/* Mobile menu toggle button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#A5A2B2] hover:text-[#F5F3F8] rounded-lg border border-[#F5F3F8]/10 bg-[#101016]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF]"
+              className="md:hidden p-2 text-[#A5A2B2] hover:text-[#F5F3F8] rounded-lg border border-[#F5F3F8]/10 bg-[#101016]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF] active:scale-95 transition-transform duration-150 cursor-pointer"
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -114,10 +120,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </header>
 
-      {/* Accessible Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-[#08080B]/98 backdrop-blur-xl md:hidden pt-24 px-6 pb-8 flex flex-col justify-between"
+      {/* Accessible Mobile Menu Overlay with smooth CSS transition */}
+      <div 
+        className={`fixed inset-0 z-40 bg-[#08080B]/98 backdrop-blur-xl md:hidden pt-24 px-6 pb-8 flex flex-col justify-between transition-all duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-2'
+        }`}
           role="dialog"
           aria-modal="true"
         >
@@ -171,7 +178,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </p>
           </div>
         </div>
-      )}
     </>
   );
 };

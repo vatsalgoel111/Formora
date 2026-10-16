@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ServiceDetail } from '../types';
+import { ScrollReveal } from '../components/common/ScrollReveal';
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronUp, Code2, ShieldCheck, Zap } from 'lucide-react';
 
 interface ServiceDetailViewProps {
@@ -28,7 +29,7 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
           <button
             type="button"
             onClick={() => onNavigate('/services')}
-            className="inline-flex items-center gap-2 text-xs font-mono text-[#A5A2B2] hover:text-[#B65CFF] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono text-[#A5A2B2] hover:text-[#B65CFF] hover:-translate-x-0.5 transition-all cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>BACK TO ALL SERVICES</span>
@@ -36,7 +37,7 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
         </div>
 
         {/* Hero Header */}
-        <div className="border-b border-[#F5F3F8]/10 pb-12 mb-16">
+        <ScrollReveal className="border-b border-[#F5F3F8]/10 pb-12 mb-16">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xs font-mono text-[#B65CFF] tracking-widest uppercase font-semibold">
               SERVICE SPECIFICATION
@@ -67,10 +68,10 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
               {service.businessProblem}
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Practice Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-12 border-b border-[#F5F3F8]/10 items-start">
+        <ScrollReveal className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-12 border-b border-[#F5F3F8]/10 items-start">
           <div className="lg:col-span-4">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               01 // APPROACH
@@ -84,98 +85,103 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
               {service.overview}
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Full Capabilities Breakdown */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-12">
+        <section className="py-16 border-b border-[#F5F3F8]/10">
+          <ScrollReveal className="mb-12">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               02 // CAPABILITIES
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
               What Is Included In This Discipline
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.capabilities.map((cap, i) => (
-              <div 
-                key={cap.name}
-                className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/25 transition-all duration-300"
-              >
-                <span className="text-xs font-mono text-[#B65CFF] block mb-2">
-                  MODULE 0{i + 1}
-                </span>
-                <h4 className="text-base font-bold text-[#F5F3F8] mb-2">
-                  {cap.name}
-                </h4>
-                <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                  {cap.description}
-                </p>
-              </div>
+              <ScrollReveal key={cap.name} delay={i * 60}>
+                <div 
+                  className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/30 transition-all duration-300 h-full"
+                >
+                  <span className="text-xs font-mono text-[#B65CFF] block mb-2">
+                    MODULE 0{i + 1}
+                  </span>
+                  <h4 className="text-base font-bold text-[#F5F3F8] mb-2">
+                    {cap.name}
+                  </h4>
+                  <p className="text-xs text-[#A5A2B2] leading-relaxed">
+                    {cap.description}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Process & Milestone Sequence */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-12">
+        <section className="py-16 border-b border-[#F5F3F8]/10">
+          <ScrollReveal className="mb-12">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               03 // WORKFLOW
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
               Delivery Sequence & Gates
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {service.process.map((st) => (
-              <div key={st.step} className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5">
-                <span className="text-base font-mono text-[#B65CFF] font-bold block mb-2">
-                  {st.step}
-                </span>
-                <h4 className="text-sm font-bold text-[#F5F3F8] mb-2">
-                  {st.title}
-                </h4>
-                <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                  {st.description}
-                </p>
-              </div>
+            {service.process.map((st, i) => (
+              <ScrollReveal key={st.step} delay={i * 70}>
+                <div className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/30 transition-all duration-300 h-full">
+                  <span className="text-base font-mono text-[#B65CFF] font-bold block mb-2">
+                    {st.step}
+                  </span>
+                  <h4 className="text-sm font-bold text-[#F5F3F8] mb-2">
+                    {st.title}
+                  </h4>
+                  <p className="text-xs text-[#A5A2B2] leading-relaxed">
+                    {st.description}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Deliverables Checklist */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-8">
+        <section className="py-16 border-b border-[#F5F3F8]/10">
+          <ScrollReveal className="mb-8">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               04 // DELIVERABLES
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
               Standard Deliverables Checklist
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {service.deliverables.map((del) => (
-              <div key={del} className="p-4 rounded-xl bg-[#101016] border border-[#F5F3F8]/5 flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#B65CFF] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#F5F3F8]">{del}</span>
-              </div>
+            {service.deliverables.map((del, i) => (
+              <ScrollReveal key={del} delay={i * 50}>
+                <div className="p-4 rounded-xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/20 transition-all duration-300 flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#B65CFF] shrink-0" />
+                  <span className="text-xs sm:text-sm text-[#F5F3F8]">{del}</span>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Frequently Asked Questions Accordion */}
-        <div className="py-16 border-b border-[#F5F3F8]/10">
-          <div className="mb-12">
+        <section className="py-16 border-b border-[#F5F3F8]/10">
+          <ScrollReveal className="mb-12">
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
               05 // FAQS
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
               Common Questions Regarding This Service
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="space-y-4 max-w-3xl">
             {service.faqs.map((faq, idx) => {
@@ -183,7 +189,7 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
               return (
                 <div 
                   key={faq.question}
-                  className="rounded-2xl border border-[#F5F3F8]/10 bg-[#101016] overflow-hidden"
+                  className="rounded-2xl border border-[#F5F3F8]/10 bg-[#101016] overflow-hidden transition-colors duration-200"
                 >
                   <button
                     type="button"
@@ -201,7 +207,7 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-[#A5A2B2] leading-relaxed border-t border-[#F5F3F8]/5 pt-4">
+                    <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-[#A5A2B2] leading-relaxed border-t border-[#F5F3F8]/5 pt-4 animate-tab-fade">
                       {faq.answer}
                     </div>
                   )}
@@ -209,31 +215,33 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
               );
             })}
           </div>
-        </div>
+        </section>
 
         {/* Bottom Conversion CTA */}
-        <div className="pt-16 p-8 sm:p-12 rounded-3xl bg-[#12121A] border border-[#B65CFF]/30 flex flex-col md:flex-row items-center justify-between gap-8 mt-12">
-          <div>
-            <span className="text-xs font-mono text-[#B65CFF] tracking-widest uppercase block mb-1 font-semibold">
-              PROJECT INQUIRY
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
-              Ready to begin with {service.title}?
-            </h3>
-            <p className="text-xs sm:text-sm text-[#A5A2B2] mt-2 max-w-lg leading-relaxed">
-              Every collaboration proposal is tailored directly to your technical requirements and business objectives. We respond within 24 hours.
-            </p>
-          </div>
+        <ScrollReveal>
+          <div className="pt-16 p-8 sm:p-12 rounded-3xl bg-[#12121A] border border-[#B65CFF]/30 flex flex-col md:flex-row items-center justify-between gap-8 mt-12 group">
+            <div>
+              <span className="text-xs font-mono text-[#B65CFF] tracking-widest uppercase block mb-1 font-semibold">
+                PROJECT INQUIRY
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
+                Ready to begin with {service.title}?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A5A2B2] mt-2 max-w-lg leading-relaxed">
+                Every collaboration proposal is tailored directly to your technical requirements and business objectives. We respond within 24 hours.
+              </p>
+            </div>
 
-          <button
-            type="button"
-            onClick={onStartProject}
-            className="px-8 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] rounded-xl transition-all shadow-xl whitespace-nowrap shrink-0 flex items-center gap-2"
-          >
-            <span>START A PROJECT</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={onStartProject}
+              className="px-8 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 rounded-xl transition-all duration-200 shadow-xl whitespace-nowrap shrink-0 flex items-center gap-2 cursor-pointer group/cta"
+            >
+              <span>START A PROJECT</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover/cta:translate-x-1" />
+            </button>
+          </div>
+        </ScrollReveal>
 
       </div>
     </div>

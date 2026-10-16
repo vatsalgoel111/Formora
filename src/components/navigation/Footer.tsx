@@ -164,10 +164,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                 <button
                   type="button"
                   onClick={onOpenContact}
-                  className="mt-2 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold tracking-wider text-black bg-[#B65CFF] hover:bg-[#D0A0FF] rounded-xl transition-colors cursor-pointer"
+                  className="mt-2 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold tracking-wider text-black bg-[#B65CFF] hover:bg-[#D0A0FF] hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 rounded-xl transition-all duration-200 cursor-pointer shadow-md group/ft"
                 >
                   <span>START A PROJECT</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/ft:translate-x-0.5 group-hover/ft:-translate-y-0.5" />
                 </button>
               </div>
             </div>

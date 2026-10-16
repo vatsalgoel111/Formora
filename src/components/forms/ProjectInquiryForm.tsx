@@ -17,10 +17,10 @@ const AVAILABLE_SERVICES = [
 ];
 
 const TIMELINES = [
-  'Within 30 Days (Immediate)',
-  '1 — 2 Months',
-  '3+ Months',
-  'Flexible / Exploring',
+  'Ready to Start Now',
+  'Within 1–2 Weeks',
+  'Within 2–4 Weeks',
+  'Flexible / Still Planning',
 ];
 
 export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
@@ -33,7 +33,7 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
     companyName: '',
     websiteUrl: '',
     selectedServices: ['Website Design & Development'],
-    timeline: '1 — 2 Months',
+    timeline: 'Ready to Start Now',
     projectOverview: '',
     consentContact: true,
   });
@@ -122,7 +122,7 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
           Brief Transmitted Successfully
         </h3>
 
-        <p className="text-sm sm:text-base text-[#A5A2B2] max-w-lg mx-auto leading-relaxed mb-6">
+        <p className="text-sm sm:text-base text-[#CDC9DA] max-w-lg mx-auto leading-relaxed mb-6">
           Thank you, <span className="text-[#F5F3F8] font-semibold">{formData.fullName}</span>. A Formora creative director has logged your brief for <span className="text-[#F5F3F8] font-semibold">{formData.companyName}</span> and will review the specifications within 24 business hours.
         </p>
 
@@ -146,12 +146,12 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
                 companyName: '',
                 websiteUrl: '',
                 selectedServices: ['Website Design & Development'],
-                timeline: '1 — 2 Months',
+                timeline: 'Ready to Start Now',
                 projectOverview: '',
                 consentContact: true,
               });
             }}
-            className="w-full sm:w-auto px-4 py-3 text-xs font-mono tracking-wider text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors"
+            className="w-full sm:w-auto px-4 py-3 text-xs font-mono tracking-wider text-[#CDC9DA] hover:text-[#F5F3F8] transition-colors cursor-pointer"
           >
             Submit Another Brief
           </button>
@@ -165,10 +165,10 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
       
       {/* 1. Services Selector */}
       <div className="space-y-3">
-        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-semibold">
           01. Services Required (Select all that apply)
         </label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {AVAILABLE_SERVICES.map((service) => {
             const isSelected = formData.selectedServices.includes(service);
             return (
@@ -176,15 +176,15 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
                 key={service}
                 type="button"
                 onClick={() => toggleService(service)}
-                className={`px-3.5 py-3 text-xs font-medium rounded-xl text-left border transition-all flex items-center justify-between gap-2 cursor-pointer ${
+                className={`p-3.5 sm:px-4 sm:py-3.5 text-xs sm:text-[13px] font-medium rounded-xl text-left border transition-all duration-200 flex items-center justify-between gap-3 cursor-pointer min-h-[54px] active:scale-[0.99] ${
                   isSelected
                     ? 'bg-[#171720] border-[#B65CFF] text-[#F5F3F8] shadow-sm'
-                    : 'bg-[#101016] border-[#F5F3F8]/10 text-[#A5A2B2] hover:border-[#F5F3F8]/30 hover:text-[#F5F3F8]'
+                    : 'bg-[#101016] border-[#F5F3F8]/10 text-[#CDC9DA] hover:border-[#F5F3F8]/30 hover:text-[#F5F3F8]'
                 }`}
               >
-                <span className="truncate">{service}</span>
+                <span className="leading-snug flex-1 select-none pr-1">{service}</span>
                 <span
-                  className={`w-3.5 h-3.5 rounded-full border shrink-0 flex items-center justify-center ${
+                  className={`w-4 h-4 rounded-full border shrink-0 flex items-center justify-center transition-colors ${
                     isSelected ? 'border-[#B65CFF] bg-[#B65CFF]' : 'border-neutral-600'
                   }`}
                 >
@@ -198,13 +198,13 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
 
       {/* 2. Contact Information */}
       <div className="space-y-4">
-        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-semibold">
           02. Contact & Brand Information
         </label>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="fullName" className="block text-xs text-[#A5A2B2] mb-1.5">
+            <label htmlFor="fullName" className="block text-xs font-medium text-[#CDC9DA] mb-1.5">
               Your Name *
             </label>
             <input
@@ -216,20 +216,20 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
                 setFormData({ ...formData, fullName: e.target.value });
                 if (errors.fullName) setErrors({ ...errors, fullName: undefined });
               }}
-              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
                 errors.fullName ? 'border-red-500/80' : 'border-[#F5F3F8]/10'
               }`}
             />
             {errors.fullName && (
-              <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                <AlertCircle className="w-3.5 h-3.5" />
+              <p className="text-xs text-red-400 mt-1 flex items-center gap-1 font-medium">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                 <span>{errors.fullName}</span>
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="businessEmail" className="block text-xs text-[#A5A2B2] mb-1.5">
+            <label htmlFor="businessEmail" className="block text-xs font-medium text-[#CDC9DA] mb-1.5">
               Business Email *
             </label>
             <input
@@ -241,20 +241,20 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
                 setFormData({ ...formData, businessEmail: e.target.value });
                 if (errors.businessEmail) setErrors({ ...errors, businessEmail: undefined });
               }}
-              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
                 errors.businessEmail ? 'border-red-500/80' : 'border-[#F5F3F8]/10'
               }`}
             />
             {errors.businessEmail && (
-              <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                <AlertCircle className="w-3.5 h-3.5" />
+              <p className="text-xs text-red-400 mt-1 flex items-center gap-1 font-medium">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                 <span>{errors.businessEmail}</span>
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="companyName" className="block text-xs text-[#A5A2B2] mb-1.5">
+            <label htmlFor="companyName" className="block text-xs font-medium text-[#CDC9DA] mb-1.5">
               Company / Brand Name *
             </label>
             <input
@@ -266,20 +266,20 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
                 setFormData({ ...formData, companyName: e.target.value });
                 if (errors.companyName) setErrors({ ...errors, companyName: undefined });
               }}
-              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
                 errors.companyName ? 'border-red-500/80' : 'border-[#F5F3F8]/10'
               }`}
             />
             {errors.companyName && (
-              <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                <AlertCircle className="w-3.5 h-3.5" />
+              <p className="text-xs text-red-400 mt-1 flex items-center gap-1 font-medium">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                 <span>{errors.companyName}</span>
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="websiteUrl" className="block text-xs text-[#A5A2B2] mb-1.5">
+            <label htmlFor="websiteUrl" className="block text-xs font-medium text-[#CDC9DA] mb-1.5">
               Current Website (Optional)
             </label>
             <input
@@ -288,7 +288,7 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
               placeholder="https://company.com"
               value={formData.websiteUrl}
               onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#101016] border border-[#F5F3F8]/10 text-sm text-[#F5F3F8] placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all"
+              className="w-full px-4 py-3 rounded-xl bg-[#101016] border border-[#F5F3F8]/10 text-sm text-[#F5F3F8] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all"
             />
           </div>
         </div>
@@ -296,8 +296,8 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
 
       {/* 3. Desired Timeline */}
       <div className="space-y-2">
-        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
-          03. Target Timeline
+        <label className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-semibold">
+          03. PREFERRED START TIMELINE
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {TIMELINES.map((t) => (
@@ -305,10 +305,10 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
               key={t}
               type="button"
               onClick={() => setFormData({ ...formData, timeline: t })}
-              className={`px-3 py-2.5 text-xs font-medium rounded-xl text-center border transition-all cursor-pointer ${
+              className={`px-3 py-2.5 text-xs font-medium rounded-xl text-center border transition-all duration-200 cursor-pointer active:scale-[0.98] ${
                 formData.timeline === t
-                  ? 'bg-[#171720] border-[#B65CFF] text-[#F5F3F8]'
-                  : 'bg-[#101016] border-[#F5F3F8]/10 text-[#A5A2B2] hover:border-[#F5F3F8]/30'
+                  ? 'bg-[#171720] border-[#B65CFF] text-[#F5F3F8] shadow-sm'
+                  : 'bg-[#101016] border-[#F5F3F8]/10 text-[#CDC9DA] hover:border-[#F5F3F8]/30 hover:text-[#F5F3F8]'
               }`}
             >
               {t}
@@ -319,7 +319,7 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
 
       {/* 4. Project Overview */}
       <div className="space-y-2">
-        <label htmlFor="projectOverview" className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+        <label htmlFor="projectOverview" className="block text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-semibold">
           04. Project Challenge & Scope *
         </label>
         <textarea
@@ -331,13 +331,13 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
             setFormData({ ...formData, projectOverview: e.target.value });
             if (errors.projectOverview) setErrors({ ...errors, projectOverview: undefined });
           }}
-          className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all ${
+          className={`w-full px-4 py-3 rounded-xl bg-[#101016] border text-sm text-[#F5F3F8] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#B65CFF] transition-all leading-relaxed ${
             errors.projectOverview ? 'border-red-500/80' : 'border-[#F5F3F8]/10'
           }`}
         />
         {errors.projectOverview && (
-          <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-            <AlertCircle className="w-3.5 h-3.5" />
+          <p className="text-xs text-red-400 mt-1 flex items-center gap-1 font-medium">
+            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
             <span>{errors.projectOverview}</span>
           </p>
         )}
@@ -353,22 +353,22 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
             setFormData({ ...formData, consentContact: e.target.checked });
             if (errors.consentContact) setErrors({ ...errors, consentContact: undefined });
           }}
-          className="mt-1 w-4 h-4 rounded bg-[#101016] border-[#F5F3F8]/20 text-[#B65CFF] focus:ring-[#B65CFF]"
+          className="mt-1 w-4 h-4 rounded bg-[#101016] border-[#F5F3F8]/20 text-[#B65CFF] focus:ring-[#B65CFF] cursor-pointer"
         />
-        <label htmlFor="consentContact" className="text-xs text-[#A5A2B2] leading-relaxed cursor-pointer">
+        <label htmlFor="consentContact" className="text-xs text-[#CDC9DA] leading-relaxed cursor-pointer select-none">
           I agree to allow Formora to evaluate this brief and communicate regarding this project inquiry.
         </label>
       </div>
       {errors.consentContact && (
-        <p className="text-xs text-red-400 flex items-center gap-1">
-          <AlertCircle className="w-3.5 h-3.5" />
+        <p className="text-xs text-red-400 flex items-center gap-1 font-medium">
+          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
           <span>{errors.consentContact}</span>
         </p>
       )}
 
       {/* Submission Actions */}
       <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#F5F3F8]/10">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#A5A2B2]">
+        <div className="flex items-center gap-2 text-xs font-mono text-[#CDC9DA]">
           <span className="w-2 h-2 rounded-full bg-[#B65CFF]" />
           <span>Direct Senior Review · 24h Response</span>
         </div>
@@ -378,7 +378,7 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
             type="button"
             onClick={handleDirectEmail}
             title="Open local email client with this formatted brief"
-            className="px-4 py-3.5 text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] bg-[#14141E] hover:bg-[#1C1C28] rounded-xl border border-white/5 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+            className="px-4 py-3.5 text-xs font-mono text-[#CDC9DA] hover:text-[#F5F3F8] bg-[#14141E] hover:bg-[#1C1C28] rounded-xl border border-white/5 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Mail className="w-4 h-4" />
             <span className="hidden sm:inline">Direct Email</span>
@@ -387,10 +387,10 @@ export const ProjectInquiryForm: React.FC<ProjectInquiryFormProps> = ({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 sm:flex-none px-8 py-3.5 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            className="flex-1 sm:flex-none px-8 py-3.5 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black hover:scale-[1.02] active:scale-[0.98] active:translate-y-0.5 rounded-xl transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 group/sub"
           >
             <span>{isSubmitting ? 'TRANSMITTING BRIEF...' : 'SUBMIT PROJECT INQUIRY'}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/sub:translate-x-1" />
           </button>
         </div>
       </div>

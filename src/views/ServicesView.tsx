@@ -1,6 +1,7 @@
 import React from 'react';
 import { SERVICES } from '../data/services';
 import { ServiceDetail } from '../types';
+import { ScrollReveal } from '../components/common/ScrollReveal';
 import { ArrowRight, CheckCircle2, HelpCircle, Code2, Sparkles, Megaphone, Palette, FileText, Users } from 'lucide-react';
 
 interface ServicesViewProps {
@@ -36,7 +37,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="border-b border-[#F5F3F8]/10 pb-10 mb-12">
+        <ScrollReveal className="border-b border-[#F5F3F8]/10 pb-10 mb-12">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#B65CFF]" />
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase font-semibold">
@@ -59,19 +60,19 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
               Every engagement is tailored to the project. Scope and deliverables are defined during discovery.
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Services List with Deep Dive Previews */}
         <div className="space-y-12">
           {SERVICES.map((service, idx) => (
-            <div
-              key={service.slug}
-              className={`p-7 sm:p-10 rounded-3xl border transition-all duration-300 relative overflow-hidden ${
-                service.isPrimary
-                  ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-xl'
-                  : 'bg-[#101016] border-[#F5F3F8]/10 hover:border-[#F5F3F8]/25'
-              }`}
-            >
+            <ScrollReveal key={service.slug} delay={idx * 60}>
+              <div
+                className={`p-7 sm:p-10 rounded-3xl border transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl relative overflow-hidden ${
+                  service.isPrimary
+                    ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-xl hover:border-[#B65CFF]/60'
+                    : 'bg-[#101016] border-[#F5F3F8]/10 hover:border-[#B65CFF]/30'
+                }`}
+              >
               {service.isPrimary && (
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B65CFF]/15 border border-[#B65CFF]/40 text-xs font-mono text-[#B65CFF] mb-6">
                   <span>PRIMARY AGENCY DISCIPLINE</span>
@@ -149,9 +150,9 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
                     </button>
                   </div>
                 </div>
-
               </div>
             </div>
+          </ScrollReveal>
           ))}
         </div>
 

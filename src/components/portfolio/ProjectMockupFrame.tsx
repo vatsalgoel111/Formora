@@ -660,19 +660,19 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
 
   return (
     <div
-      className={`relative rounded-2xl bg-[#09090D] border border-[#F5F3F8]/10 shadow-2xl overflow-hidden transition-all duration-300 hover:border-[#B65CFF]/30 ${className}`}
+      className={`relative rounded-2xl bg-[#09090D] border border-[#F5F3F8]/10 shadow-2xl overflow-hidden transition-all duration-300 ease-out group-hover:border-[#B65CFF]/35 group-hover:shadow-[0_20px_45px_rgba(0,0,0,0.6)] ${className}`}
     >
       {/* Top Browser Window Header */}
-      <div className="h-10 px-4 bg-[#101016] border-b border-[#F5F3F8]/10 flex items-center justify-between">
+      <div className="h-10 px-4 bg-[#101016] border-b border-[#F5F3F8]/10 flex items-center justify-between select-none">
         {/* macOS Traffic Lights */}
         <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80 transition-opacity duration-150 group-hover:opacity-100" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80 transition-opacity duration-150 group-hover:opacity-100" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80 transition-opacity duration-150 group-hover:opacity-100" />
         </div>
 
         {/* URL Pill Display */}
-        <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#09090D]/80 border border-white/5 text-[10px] font-mono text-[#A5A2B2] max-w-[260px] truncate">
+        <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#09090D]/80 border border-white/5 text-[10px] font-mono text-[#A5A2B2] max-w-[260px] truncate transition-colors duration-200 group-hover:text-[#F5F3F8]">
           <span className="text-emerald-400">🔒</span>
           <span className="truncate">{project.liveUrl}</span>
         </div>
@@ -683,14 +683,16 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           title={`Visit live website: ${project.title}`}
-          className="p-1 rounded text-[#A5A2B2] hover:text-[#B65CFF] hover:bg-white/5 transition-colors cursor-pointer"
+          className="p-1 rounded text-[#A5A2B2] hover:text-[#B65CFF] hover:bg-white/5 hover:scale-110 active:scale-95 transition-all duration-150 cursor-pointer"
         >
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
       </div>
 
-      {/* Main Content Viewport */}
-      {renderContent()}
+      {/* Main Content Viewport with subtle hover depth */}
+      <div className="transition-transform duration-500 ease-out group-hover:scale-[1.008]">
+        {renderContent()}
+      </div>
     </div>
   );
 };
