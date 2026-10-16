@@ -2,7 +2,9 @@ export type ServiceCategory =
   | 'web-design'
   | 'branding'
   | 'social-media'
-  | 'growth-marketing';
+  | 'content-writing'
+  | 'growth-marketing'
+  | 'influencer-ugc';
 
 export interface Project {
   id: string;
@@ -30,7 +32,7 @@ export interface Project {
   heroMockup: {
     title: string;
     subtitle: string;
-    metricsLabel?: string;
+    designFocusLabel: string;
     accentHex: string;
   };
 }
@@ -64,7 +66,6 @@ export interface InquiryFormData {
   companyName: string;
   websiteUrl: string;
   selectedServices: string[];
-  budgetRange: string;
   timeline: string;
   projectOverview: string;
   consentContact: boolean;

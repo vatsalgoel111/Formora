@@ -7,26 +7,26 @@ export const PROJECTS: Project[] = [
     title: 'Aurae Botanical Skincare',
     clientSubtitle: 'Concept Botanical Formulations & E-Commerce Flagship',
     category: 'web-design',
-    categoryLabel: 'Digital & E-Commerce',
+    categoryLabel: 'Website & Digital Commerce',
     year: '2026',
     isConcept: true,
-    conceptLabel: 'UNSOLICITED CONCEPT STUDY',
-    tagline: 'An obsidian-toned, fluid commerce experience for high-potency botanicals.',
+    conceptLabel: 'CONCEPT STUDY',
+    tagline: 'An obsidian-toned, fluid digital commerce experience for high-potency botanicals.',
     challenge:
-      'Most luxury skincare platforms suffer from repetitive white-minimalism that blurs brands together. The challenge was crafting an art-directed digital flagship that communicates scientific biological extraction and tactile sensory indulgence without sacrificing microsecond checkout velocity.',
+      'Most luxury skincare platforms rely on generic white-space minimal templates that blur brands together. The challenge was crafting an art-directed digital flagship that communicates cellular biological extraction and tactile sensory indulgence through deliberate dark typography and fluid transitions.',
     solution:
-      'Engineered a monolithic obsidian design architecture accented by luminous bioluminescent violet cues, dynamic tactile ingredient inspection cards, and an asynchronous headless checkout architecture designed for effortless conversion.',
+      'Engineered a monolithic obsidian design architecture accented by luminous bioluminescent violet cues, macroscopic ingredient inspection cards, and an asynchronous headless checkout architecture designed for effortless conversion.',
     services: [
       'Digital Flagship Architecture',
-      'Art-Directed UX/UI Design',
+      'Art-Directed UI/UX Design',
       'Interactive Ingredient Taxonomy',
-      'Headless Commerce Optimization',
+      'Design Token Specification',
     ],
     deliverables: [
       'Interactive Web Experience (Desktop & Mobile)',
       'Design Token Specification Sheet',
       'Custom Product Interaction Micro-States',
-      'Cart Drawer & Single-Stage Checkout Flow',
+      'Cart Drawer & Reservation Flow',
     ],
     colorPalette: [
       { hex: '#0B0B0F', name: 'Volcanic Obsidian' },
@@ -42,13 +42,13 @@ export const PROJECTS: Project[] = [
     visualHighlights: [
       {
         title: 'Tactile Formula Dossier',
-        description: 'Interactive macroscopic breakdown of active alpine plant enzymes and hydration retention ratios.',
+        description: 'Macroscopic breakdown of active alpine plant enzymes and cellular hydration matrices.',
         mockupType: 'desktop-browser',
         accentColor: '#B65CFF',
       },
       {
-        title: 'Single-Stage Mobile Checkout',
-        description: 'Zero-distraction checkout journey optimized for one-thumb completion on mobile devices.',
+        title: 'Single-Stage Mobile Flow',
+        description: 'Streamlined checkout journey optimized for one-thumb completion on mobile devices.',
         mockupType: 'mobile-device',
         accentColor: '#D0A0FF',
       },
@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
     heroMockup: {
       title: 'AURAE BOTANICAL // SYSTEM 01',
       subtitle: 'Cellular Restoration Botanical Serum',
-      metricsLabel: '320ms Page Render · Zero Layout Shift',
+      designFocusLabel: 'Monochrome Obsidian Aesthetic · Fluid Micro-Interactions',
       accentHex: '#B65CFF',
     },
   },
@@ -72,10 +72,10 @@ export const PROJECTS: Project[] = [
     title: 'Kanso Alpine Pavilion',
     clientSubtitle: 'Concept Architectural Sanctuary & Booking Experience',
     category: 'web-design',
-    categoryLabel: 'Hospitality & Architecture',
+    categoryLabel: 'Hospitality & Spatial Web',
     year: '2026',
     isConcept: true,
-    conceptLabel: 'CONCEPT EXPLORATION',
+    conceptLabel: 'CONCEPT STUDY',
     tagline: 'Silent luxury: a digital architectural journey through brutalist alpine serenity.',
     challenge:
       'High-end retreat websites often overwhelm visitors with complex booking engines and cluttered widgets. Kanso needed a digital environment reflecting its architectural ethos: deep silence, stone textures, and unhurried intentionality.',
@@ -119,8 +119,8 @@ export const PROJECTS: Project[] = [
     ],
     heroMockup: {
       title: 'KANSO ARCHITECTURAL PAVILION',
-      subtitle: 'Sanctuary 2,400m Above the Clouds',
-      metricsLabel: 'Bespoke Experience · Curated Inventory',
+      subtitle: 'Sanctuary 2,400m Above the Valais Alps',
+      designFocusLabel: 'Brutalist Stone Palette · Editorial Spatial Flow',
       accentHex: '#D0A0FF',
     },
   },
@@ -133,10 +133,10 @@ export const PROJECTS: Project[] = [
     categoryLabel: 'Brand Identity & Visual System',
     year: '2026',
     isConcept: true,
-    conceptLabel: 'DESIGN SYSTEM STUDY',
-    tagline: 'Monochrome precision and asymmetric grid systems for a contemporary studio.',
+    conceptLabel: 'CONCEPT STUDY',
+    tagline: 'Monochrome precision and asymmetric grid systems for a contemporary practice.',
     challenge:
-      'Modern architectural practices require digital archives capable of showcasing massive master plans alongside delicate material swatches without visual noise or clunky navigation.',
+      'Modern architectural practices require digital archives capable of showcasing massive master plans alongside delicate material swatches without visual clutter or clunky navigation.',
     solution:
       'Crafted a high-contrast typographic identity system anchored by custom monospace data tags, horizontal architectural panning, and modular case-study layout blocks that adapt seamlessly to portrait blueprints and panoramic renders.',
     services: [
@@ -164,21 +164,21 @@ export const PROJECTS: Project[] = [
     visualHighlights: [
       {
         title: 'Master Plan Dynamic Split Grid',
-        description: 'Interactive scale comparison tool viewing structural framing alongside finished photography.',
+        description: 'Scale comparison view showing structural framing alongside finished architectural photography.',
         mockupType: 'desktop-browser',
         accentColor: '#B65CFF',
       },
       {
         title: 'Exhibition Lookbook & Monograph',
-        description: 'Custom linen-bound monograph typography layout with foil-stamped coordinates.',
+        description: 'Linen-bound monograph typography layout with foil-stamped coordinates.',
         mockupType: 'brand-collateral',
         accentColor: '#8B5CF6',
       },
     ],
     heroMockup: {
       title: 'VERVE ARCHITECTURAL ARCHIVE',
-      subtitle: 'Built Structures & Spatial Research 2022—2026',
-      metricsLabel: 'Rigorous Grid · 100% Responsive Blueprint',
+      subtitle: 'Built Structures & Spatial Research',
+      designFocusLabel: 'Swiss Grid Architecture · Typographic Discipline',
       accentHex: '#B65CFF',
     },
   },
@@ -191,12 +191,12 @@ export const PROJECTS: Project[] = [
     categoryLabel: 'Growth & Social Campaign',
     year: '2026',
     isConcept: true,
-    conceptLabel: 'CAMPAIGN FRAMEWORK STUDY',
-    tagline: 'A creator-led visual marketing system built for viral resonance and retention.',
+    conceptLabel: 'CONCEPT STUDY',
+    tagline: 'A creator-led visual marketing system built for authentic resonance and retention.',
     challenge:
-      'Beverage brands launching in crowded retail and D2C spaces struggle with high customer acquisition costs and low ad creative longevity. Solace needed an evergreen content engine combining creator-led authenticity with premium brand polish.',
+      'Beverage brands launching in crowded retail and D2C spaces struggle with creative fatigue and low engagement. Solace needed an evergreen content framework combining creator authenticity with luxury brand polish.',
     solution:
-      'Developed a modular UGC campaign playbook with 24 distinct creator hooks, high-converting TikTok/Reels video templates, and a dynamic mobile landing page tailored for frictionless multi-pack subscriptions.',
+      'Developed a modular UGC campaign playbook with distinct creator hooks, high-retention video templates, and a dynamic mobile landing page tailored for frictionless multi-pack delivery.',
     services: [
       'UGC Strategy & Creator Briefing Engine',
       'Short-Form Content System',
@@ -205,9 +205,9 @@ export const PROJECTS: Project[] = [
     ],
     deliverables: [
       'Creator Sourcing & Production Guidelines',
-      '12 Ready-to-Test Video Ad Variations',
+      'Modular Video Creative Formats',
       'Mobile First Subscription Funnel',
-      'Weekly Creative Performance Dashboard Template',
+      'Creative Testing Framework',
     ],
     colorPalette: [
       { hex: '#0A0A0E', name: 'Midnight Berry' },
@@ -222,13 +222,13 @@ export const PROJECTS: Project[] = [
     visualHighlights: [
       {
         title: 'Vertical Creator Storyboard Engine',
-        description: 'High-converting hook formulas paired with stylized ingredient splash macro videography.',
+        description: 'Hook formulas paired with stylized ingredient splash macro videography.',
         mockupType: 'mobile-device',
         accentColor: '#D0A0FF',
       },
       {
         title: 'Mobile D2C Subscription Funnel',
-        description: 'Interactive flavor bundle builder with real-time savings calculator and instant Apple Pay checkout.',
+        description: 'Interactive flavor bundle builder with delivery frequency customization.',
         mockupType: 'desktop-browser',
         accentColor: '#B65CFF',
       },
@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
     heroMockup: {
       title: 'SOLACE ADAPTOGENIC ELIXIR',
       subtitle: 'Creator-Led Launch Engine & Multi-Pack Funnel',
-      metricsLabel: 'Optimized Hook Architecture · Frictionless D2C',
+      designFocusLabel: 'Creator-First Video System · Frictionless D2C',
       accentHex: '#D0A0FF',
     },
   },

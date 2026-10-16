@@ -1,7 +1,7 @@
 import React from 'react';
 import { SERVICES } from '../data/services';
 import { ServiceDetail } from '../types';
-import { ArrowRight, CheckCircle2, HelpCircle, Code2, Sparkles, Megaphone, Palette } from 'lucide-react';
+import { ArrowRight, CheckCircle2, HelpCircle, Code2, Sparkles, Megaphone, Palette, FileText, Users } from 'lucide-react';
 
 interface ServicesViewProps {
   onOpenService: (slug: string) => void;
@@ -20,19 +20,23 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
         return <Palette className="w-5 h-5 text-[#B65CFF]" />;
       case 'social-media':
         return <Sparkles className="w-5 h-5 text-[#B65CFF]" />;
+      case 'content-writing':
+        return <FileText className="w-5 h-5 text-[#B65CFF]" />;
       case 'growth-marketing':
         return <Megaphone className="w-5 h-5 text-[#B65CFF]" />;
+      case 'influencer-ugc':
+        return <Users className="w-5 h-5 text-[#B65CFF]" />;
       default:
         return <Code2 className="w-5 h-5 text-[#B65CFF]" />;
     }
   };
 
   return (
-    <div className="pt-28 pb-32">
+    <div className="pt-24 sm:pt-28 pb-28 sm:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="border-b border-[#F5F3F8]/10 pb-12 mb-16">
+        <div className="border-b border-[#F5F3F8]/10 pb-10 mb-12">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#B65CFF]" />
             <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase font-semibold">
@@ -47,24 +51,24 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <p className="text-base text-[#A5A2B2] max-w-2xl leading-relaxed">
-              We lead with world-class website design and development, supported by brand identity and creator-led marketing. Every engagement is tailored to your business stage and commercial objectives.
+              We lead with world-class website design and development, supported by brand identity, copywriting, and creator-led marketing. Every engagement is structured around your business stage and commercial objectives.
             </p>
 
-            <div className="p-3 rounded-xl bg-[#101016] border border-[#F5F3F8]/10 text-xs text-[#A5A2B2] max-w-xs shrink-0 font-mono">
-              <span className="text-[#B65CFF] font-semibold block mb-1">VARIABLE PRICING</span>
-              Scope and investment are calculated transparently based on functional requirements, never arbitrary packages.
+            <div className="p-3.5 rounded-2xl bg-[#101016] border border-[#F5F3F8]/10 text-xs text-[#A5A2B2] max-w-xs shrink-0 font-mono">
+              <span className="text-[#B65CFF] font-semibold block mb-1">TAILORED SCOPE</span>
+              Every engagement is tailored to the project. Scope and deliverables are defined during discovery.
             </div>
           </div>
         </div>
 
         {/* Services List with Deep Dive Previews */}
-        <div className="space-y-16">
+        <div className="space-y-12">
           {SERVICES.map((service, idx) => (
             <div
               key={service.slug}
-              className={`p-8 sm:p-12 rounded-3xl border transition-all duration-300 relative overflow-hidden ${
+              className={`p-7 sm:p-10 rounded-3xl border transition-all duration-300 relative overflow-hidden ${
                 service.isPrimary
-                  ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-2xl'
+                  ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-xl'
                   : 'bg-[#101016] border-[#F5F3F8]/10 hover:border-[#F5F3F8]/25'
               }`}
             >
@@ -95,7 +99,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
 
                   <div className="p-4 rounded-xl bg-[#08080B]/60 border border-white/5 space-y-1.5">
                     <span className="text-[10px] font-mono text-[#B65CFF] tracking-widest uppercase block font-semibold">
-                      BUSINESS FRICTION WE SOLVE
+                      COMMERCIAL FRICTION WE SOLVE
                     </span>
                     <p className="text-xs text-[#A5A2B2] leading-relaxed">
                       {service.businessProblem}
@@ -108,7 +112,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
                       onClick={() => onOpenService(service.slug)}
                       className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#F5F3F8] hover:text-[#B65CFF] transition-colors group cursor-pointer"
                     >
-                      <span>VIEW FULL PRACTICE BREAKDOWN & FAQS</span>
+                      <span>VIEW PRACTICE SPECIFICATIONS</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </button>
                   </div>
@@ -132,16 +136,16 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
 
                   <div className="pt-4 border-t border-[#F5F3F8]/10 flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-                      <span>TYPICAL DELIVERABLES:</span>
-                      <span className="text-[#F5F3F8]">{service.deliverables.length} Key Milestones</span>
+                      <span>KEY DELIVERABLES:</span>
+                      <span className="text-[#F5F3F8]">{service.deliverables.length} Defined Milestones</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={onStartProject}
-                      className="px-4 py-2 text-xs font-medium rounded-lg bg-[#F5F3F8] text-black hover:bg-[#B65CFF] transition-colors"
+                      className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#F5F3F8] text-black hover:bg-[#B65CFF] transition-colors cursor-pointer"
                     >
-                      Inquire on this Service
+                      Inquire on this Practice
                     </button>
                   </div>
                 </div>

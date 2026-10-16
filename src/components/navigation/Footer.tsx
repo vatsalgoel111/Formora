@@ -13,10 +13,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
 
   return (
     <>
-      <footer className="relative bg-[#08080B] border-t border-[#F5F3F8]/10 pt-20 pb-12 overflow-hidden">
+      <footer className="relative bg-[#08080B] border-t border-[#F5F3F8]/10 pt-16 sm:pt-20 pb-12 overflow-hidden">
         {/* Subtle background ambient glow */}
         <div 
-          className="absolute bottom-0 right-1/4 w-[500px] h-[300px] pointer-events-none opacity-20 blur-3xl z-0"
+          className="absolute bottom-0 right-1/4 w-[450px] h-[250px] pointer-events-none opacity-15 blur-3xl z-0"
           style={{
             background: 'radial-gradient(circle, rgba(182, 92, 255, 0.25) 0%, rgba(8, 8, 11, 0) 70%)',
           }}
@@ -25,11 +25,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Top Footer Tier: Brand Lockup & Direct Inquiry Prompt */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[#F5F3F8]/10">
-            <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#F5F3F8]/10">
+            <div className="lg:col-span-5 flex flex-col gap-5">
               <FormoraLogo variant="horizontal" size="md" showStudioLabel={true} />
               
-              <p className="text-base text-[#A5A2B2] max-w-md leading-relaxed">
+              <p className="text-sm sm:text-base text-[#A5A2B2] max-w-md leading-relaxed">
                 Formora creates distinctive websites, compelling brand experiences, and creative marketing systems that help ambitious businesses move forward.
               </p>
 
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
               </div>
 
               {/* Verified Direct Contact */}
-              <div className="flex flex-col gap-2 pt-2 text-sm text-[#A5A2B2]">
+              <div className="flex flex-col gap-2 pt-2 text-xs sm:text-sm text-[#A5A2B2]">
                 <a 
                   href="mailto:hello@formora.studio"
                   className="inline-flex items-center gap-2 hover:text-[#F5F3F8] transition-colors"
@@ -56,15 +56,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
             {/* Navigation Columns */}
             <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
               {/* Studio Index */}
-              <div className="flex flex-col gap-4">
-                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+              <div className="flex flex-col gap-3.5">
+                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-medium">
                   Studio
                 </span>
-                <ul className="flex flex-col gap-2.5 text-sm text-[#A5A2B2]">
+                <ul className="flex flex-col gap-2 text-xs sm:text-sm text-[#A5A2B2]">
                   <li>
                     <button 
                       onClick={() => onNavigate('/')} 
-                      className="hover:text-[#F5F3F8] transition-colors"
+                      className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
                     >
                       Home
                     </button>
@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                   <li>
                     <button 
                       onClick={() => onNavigate('/work')} 
-                      className="hover:text-[#F5F3F8] transition-colors"
+                      className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
                     >
                       Selected Work
                     </button>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                   <li>
                     <button 
                       onClick={() => onNavigate('/studio')} 
-                      className="hover:text-[#F5F3F8] transition-colors"
+                      className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
                     >
                       About & Ethos
                     </button>
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                   <li>
                     <button 
                       onClick={() => onNavigate('/contact')} 
-                      className="hover:text-[#F5F3F8] transition-colors"
+                      className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
                     >
                       Project Inquiries
                     </button>
@@ -97,15 +97,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
               </div>
 
               {/* Services Breakdown */}
-              <div className="flex flex-col gap-4">
-                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+              <div className="flex flex-col gap-3.5">
+                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-medium">
                   Services
                 </span>
-                <ul className="flex flex-col gap-2.5 text-sm text-[#A5A2B2]">
+                <ul className="flex flex-col gap-2 text-xs sm:text-sm text-[#A5A2B2]">
                   <li>
                     <button 
                       onClick={() => onNavigate('/services/web-design')} 
-                      className="hover:text-[#F5F3F8] transition-colors text-left"
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
                     >
                       Web Design & Dev
                     </button>
@@ -113,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                   <li>
                     <button 
                       onClick={() => onNavigate('/services/branding')} 
-                      className="hover:text-[#F5F3F8] transition-colors text-left"
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
                     >
                       Brand Identity
                     </button>
@@ -121,34 +121,50 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
                   <li>
                     <button 
                       onClick={() => onNavigate('/services/social-media')} 
-                      className="hover:text-[#F5F3F8] transition-colors text-left"
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
                     >
-                      Social Media Management
+                      Social Media
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => onNavigate('/services/content-writing')} 
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
+                    >
+                      Content Writing
                     </button>
                   </li>
                   <li>
                     <button 
                       onClick={() => onNavigate('/services/growth-marketing')} 
-                      className="hover:text-[#F5F3F8] transition-colors text-left"
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
                     >
-                      Growth & UGC Campaigns
+                      Growth Marketing
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => onNavigate('/services/influencer-ugc')} 
+                      className="hover:text-[#F5F3F8] transition-colors text-left cursor-pointer"
+                    >
+                      Influencer & UGC
                     </button>
                   </li>
                 </ul>
               </div>
 
-              {/* Working Hours & Call to Action */}
-              <div className="col-span-2 sm:col-span-1 flex flex-col gap-4">
-                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase">
+              {/* Evergreen Engagement & Call to Action */}
+              <div className="col-span-2 sm:col-span-1 flex flex-col gap-3.5">
+                <span className="text-xs font-mono tracking-widest text-[#F5F3F8] uppercase font-medium">
                   Engagement
                 </span>
                 <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                  Now onboarding new client partnerships for Q1/Q2. Reach out to schedule a preliminary discovery session.
+                  Have a project in mind? Let's discuss what we can create together.
                 </p>
                 <button
                   type="button"
                   onClick={onOpenContact}
-                  className="mt-2 inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold tracking-wider text-black bg-[#B65CFF] hover:bg-[#D0A0FF] rounded-lg transition-colors"
+                  className="mt-2 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold tracking-wider text-black bg-[#B65CFF] hover:bg-[#D0A0FF] rounded-xl transition-colors cursor-pointer"
                 >
                   <span>START A PROJECT</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -157,8 +173,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
             </div>
           </div>
 
-          {/* Middle Brand Pillars Bar (Exact replication of branding reference footer) */}
-          <div className="py-8 border-b border-[#F5F3F8]/10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+          {/* Middle Brand Pillars Bar */}
+          <div className="py-7 border-b border-[#F5F3F8]/10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
             <div className="flex items-center gap-3 justify-center md:justify-start">
               <span className="text-xs font-mono text-[#B65CFF] tracking-[0.2em] font-semibold">
                 01. CREATIVE
@@ -182,7 +198,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
           </div>
 
           {/* Bottom Legal & Copyright Tier */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A5A2B2]">
+          <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A5A2B2]">
             <div className="flex items-center gap-2">
               <FormoraMark size={16} />
               <span>© {currentYear} FORMORA Studio. All rights reserved.</span>
@@ -192,14 +208,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
               <button
                 type="button"
                 onClick={() => setActiveLegalModal('privacy')}
-                className="hover:text-[#F5F3F8] transition-colors"
+                className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
               >
                 Privacy Policy
               </button>
               <button
                 type="button"
                 onClick={() => setActiveLegalModal('terms')}
-                className="hover:text-[#F5F3F8] transition-colors"
+                className="hover:text-[#F5F3F8] transition-colors cursor-pointer"
               >
                 Terms of Engagement
               </button>
@@ -229,7 +245,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
               </div>
               <button 
                 onClick={() => setActiveLegalModal(null)}
-                className="text-sm font-mono text-[#A5A2B2] hover:text-[#F5F3F8] px-2 py-1"
+                className="text-sm font-mono text-[#A5A2B2] hover:text-[#F5F3F8] px-2 py-1 cursor-pointer"
               >
                 CLOSE [ESC]
               </button>
@@ -268,7 +284,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact }) => 
               </div>
               <button 
                 onClick={() => setActiveLegalModal(null)}
-                className="text-sm font-mono text-[#A5A2B2] hover:text-[#F5F3F8] px-2 py-1"
+                className="text-sm font-mono text-[#A5A2B2] hover:text-[#F5F3F8] px-2 py-1 cursor-pointer"
               >
                 CLOSE [ESC]
               </button>

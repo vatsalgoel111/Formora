@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormoraSculpture3D } from '../components/3d/FormoraSculpture3D';
 import { FormoraMark } from '../components/brand/FormoraLogo';
 import { ProjectMockupFrame } from '../components/portfolio/ProjectMockupFrame';
-import { ProjectInquiryForm } from '../components/forms/ProjectInquiryForm';
 import { PROJECTS } from '../data/projects';
 import { SERVICES } from '../data/services';
 import { 
@@ -31,24 +30,31 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenService,
 }) => {
   const [activePillar, setActivePillar] = useState<number>(0);
+  const [heroMounted, setHeroMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Quick, elegant hero entrance
+    const timer = setTimeout(() => setHeroMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const pillars = [
     {
       index: '01',
       title: 'CREATIVE',
-      heading: 'Distinctive identities and visual content that give brands a recognizable voice.',
+      heading: 'Distinctive visual identities and storytelling that give brands an unmistakable voice.',
       description:
-        'We design visual architectures that command respect without screaming. From surgical typography and custom logomarks to modular design tokens, every aesthetic decision is rooted in commercial differentiation.',
-      deliverables: ['Brand Identity Systems', 'Typographic Frameworks', 'Packaging & Monograph Design', 'Art Direction'],
+        'We design visual architectures that command respect through precision and restraint. From surgical typography and custom monograms to comprehensive brand guidelines, every aesthetic decision is rooted in commercial differentiation.',
+      deliverables: ['Brand Identity Systems', 'Typography & Color Frameworks', 'Packaging & Monograph Design', 'Creative Direction'],
       accentColor: '#B65CFF',
     },
     {
       index: '02',
       title: 'DIGITAL',
-      heading: 'Thoughtfully designed websites and digital experiences built around real business needs.',
+      heading: 'Thoughtfully engineered websites and digital experiences built around real business objectives.',
       description:
-        'Our primary discipline: high-velocity digital flagships engineered with clean TypeScript, seamless responsiveness, and cinematic restraint. Built for real conversion, effortless navigation, and sub-second load times.',
-      deliverables: ['Custom Web Flagships', 'Headless E-Commerce', 'Interactive 3D WebGL', 'High-Converting Landing Pages'],
+        'Our primary discipline: high-velocity digital flagships engineered with modern TypeScript, accessible semantics, and cinematic restraint. Built for real conversion, effortless navigation, and intuitive responsiveness.',
+      deliverables: ['Custom Web Flagships', 'Headless Commerce Experiences', 'Interactive 3D WebGL', 'High-Converting Landing Pages'],
       accentColor: '#D0A0FF',
     },
     {
@@ -56,8 +62,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
       title: 'GROWTH',
       heading: 'Content and marketing systems that help brands connect with their audiences.',
       description:
-        'We orchestrate digital marketing and creator-led campaigns that bridge genuine human advocacy and quantitative rigor. Sourcing top creators, producing high-retention video creative, and testing multi-channel funnels.',
-      deliverables: ['Creator-Led UGC Campaigns', 'Influencer Partnerships', 'Short-Form Video Production', 'Paid Social Creatives'],
+        'We orchestrate digital marketing, content writing, and creator-led campaigns that bridge genuine human advocacy and commercial rigor. Sourcing aligned creators, producing high-retention video creative, and testing multi-channel funnels.',
+      deliverables: ['Creator-Led UGC Campaigns', 'Social Media Management', 'Strategic Copywriting', 'Multi-Channel Ad Creative'],
       accentColor: '#8B5CF6',
     },
   ];
@@ -85,8 +91,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
     },
     {
       number: '05',
-      title: 'Defined Deliverables & Pricing',
-      description: 'Scope, timelines, and milestones are transparently established upfront with structured review gates and zero hidden surprises.',
+      title: 'Clear Scope & Deliverables',
+      description: 'Scope, timelines, and milestones are transparently established upfront through collaborative discovery, ensuring clear expectations without ambiguity.',
     },
     {
       number: '06',
@@ -96,33 +102,47 @@ export const HomeView: React.FC<HomeViewProps> = ({
   ];
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       
       {/* ================================================== */}
       {/* SECTION 1: CINEMATIC HERO                          */}
       {/* ================================================== */}
-      <section className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden">
-        {/* Ambient atmospheric backdrop */}
-        <div 
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none opacity-25 blur-3xl z-0"
-          style={{ background: 'radial-gradient(circle, #B65CFF 0%, rgba(8, 8, 11, 0) 70%)' }}
-        />
+      <section className="relative min-h-[88vh] flex flex-col justify-between pt-24 sm:pt-28 pb-12 overflow-hidden border-b border-[#F5F3F8]/10">
+        
+        {/* Subtle Architectural Grid Lines */}
+        <div className="absolute inset-0 bg-grid-subtle opacity-30 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+          
+          {/* Top Live Studio Status Strip */}
+          <div 
+            className={`flex flex-wrap items-center justify-between pb-6 mb-8 border-b border-[#F5F3F8]/10 text-xs font-mono text-[#A5A2B2] gap-4 transition-all duration-700 ${
+              heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#B65CFF]" />
+              <span className="text-[#F5F3F8] tracking-widest uppercase font-medium">
+                INDEPENDENT DIGITAL & CREATIVE STUDIO
+              </span>
+            </div>
+            <div className="hidden sm:flex items-center gap-6">
+              <span>WORLDWIDE DIGITAL PRACTICE</span>
+              <span className="text-neutral-600">·</span>
+              <span className="text-[#B65CFF]">BUILT TO MAKE AN IMPRESSION</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column: Bold Headline & Editorial Copy */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
+            <div 
+              className={`lg:col-span-7 flex flex-col gap-6 transition-all duration-1000 delay-150 ${
+                heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
               
-              {/* Eyebrow Label */}
-              <div className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B65CFF]" />
-                <span className="text-xs font-mono tracking-[0.25em] text-[#B65CFF] uppercase font-semibold">
-                  INDEPENDENT DIGITAL & CREATIVE STUDIO
-                </span>
-              </div>
-
-              {/* Bold Headline with Restrained Violet Emphasis */}
+              {/* Bold Headline with Restrained Violet Accent */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#F5F3F8] leading-[1.08] text-balance">
                 WE BUILD DIGITAL <br className="hidden sm:inline" />
                 EXPERIENCES THAT <br />
@@ -141,7 +161,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <button
                   type="button"
                   onClick={() => onNavigate('/contact')}
-                  className="px-7 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-xl transition-all duration-200 shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+                  className="px-7 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-xl transition-all duration-200 shadow-xl flex items-center justify-center gap-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF]"
                 >
                   <span>LET’S BUILD SOMETHING</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -157,44 +177,61 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </button>
               </div>
 
-              {/* Brand Pillars Metadata Bar */}
-              <div className="pt-8 border-t border-[#F5F3F8]/10 flex flex-wrap items-center gap-6 text-xs font-mono text-[#A5A2B2]">
+              {/* Core Disciplines Metadata Strip */}
+              <div className="pt-6 border-t border-[#F5F3F8]/10 flex flex-wrap items-center gap-6 text-xs font-mono text-[#A5A2B2]">
                 <div className="flex items-center gap-2">
                   <span className="text-[#B65CFF] font-semibold">01</span>
-                  <span>CREATIVE</span>
+                  <span>CREATIVE / Brand Identity</span>
                 </div>
-                <span className="text-neutral-700">/</span>
+                <span className="text-neutral-700">·</span>
                 <div className="flex items-center gap-2">
                   <span className="text-[#B65CFF] font-semibold">02</span>
-                  <span>DIGITAL</span>
+                  <span>DIGITAL / Flagship Websites</span>
                 </div>
-                <span className="text-neutral-700">/</span>
+                <span className="text-neutral-700">·</span>
                 <div className="flex items-center gap-2">
                   <span className="text-[#B65CFF] font-semibold">03</span>
-                  <span>GROWTH</span>
+                  <span>GROWTH / Creator Campaigns</span>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Signature 3D Brand Sculpture */}
-            <div className="lg:col-span-5 relative flex items-center justify-center">
-              <div className="w-full max-w-[500px] h-[480px] sm:h-[540px] relative rounded-3xl bg-[#0B0B10]/60 border border-[#F5F3F8]/5 shadow-2xl backdrop-blur-sm overflow-hidden flex items-center justify-center">
+            <div 
+              className={`lg:col-span-5 relative flex items-center justify-center transition-all duration-1000 delay-300 ${
+                heroMounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              }`}
+            >
+              <div className="w-full h-[460px] sm:h-[520px] lg:h-[580px] relative rounded-3xl bg-gradient-to-b from-[#101018]/60 to-[#0A0A0F]/80 border border-[#F5F3F8]/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-md overflow-hidden flex items-center justify-center group">
+                {/* Subtle corner registration marks for architectural precision */}
+                <span className="absolute top-4 left-4 text-[10px] font-mono text-[#A5A2B2]/30 select-none pointer-events-none">+</span>
+                <span className="absolute top-4 right-4 text-[10px] font-mono text-[#A5A2B2]/30 select-none pointer-events-none">+</span>
+                <span className="absolute bottom-4 left-4 text-[10px] font-mono text-[#A5A2B2]/30 select-none pointer-events-none">+</span>
+                <span className="absolute bottom-4 right-4 text-[10px] font-mono text-[#A5A2B2]/30 select-none pointer-events-none">+</span>
+
                 <FormoraSculpture3D enableInteraction={true} />
               </div>
             </div>
 
           </div>
         </div>
+
+        {/* Bottom Hero Anchor Bar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-10 pt-6 border-t border-[#F5F3F8]/5 flex flex-wrap items-center justify-between text-xs font-mono text-neutral-500 gap-4">
+          <span>GLOBAL PRACTICE · AMERICAS & EMEA</span>
+          <span className="text-neutral-400">SCROLL TO EXPLORE ↓</span>
+          <span>EST. 2026</span>
+        </div>
       </section>
 
       {/* ================================================== */}
       {/* SECTION 2: BRAND STATEMENT                         */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 border-y border-[#F5F3F8]/10 bg-[#0A0A0E] relative overflow-hidden">
+      <section className="py-20 sm:py-28 border-b border-[#F5F3F8]/10 bg-[#0A0A0E] relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 mb-6">
-            <span className="text-xs font-mono tracking-[0.25em] text-[#B65CFF] uppercase">
-              STUDIO PHILOSOPHY
+            <span className="text-xs font-mono tracking-[0.25em] text-[#B65CFF] uppercase font-medium">
+              CORE STUDIO PHILOSOPHY
             </span>
           </div>
 
@@ -215,12 +252,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ================================================== */}
       {/* SECTION 3: THE THREE PILLARS                       */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 relative">
+      <section className="py-20 sm:py-28 relative border-b border-[#F5F3F8]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-[#F5F3F8]/10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#F5F3F8]/10">
             <div>
-              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
+              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2 font-medium">
                 FOUNDATIONAL ARCHITECTURE
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F3F8] tracking-tight">
@@ -236,7 +273,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Pillar Selector Column */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
+            <div className="lg:col-span-5 flex flex-col gap-3.5">
               {pillars.map((pillar, idx) => {
                 const isActive = activePillar === idx;
                 return (
@@ -244,7 +281,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     key={pillar.title}
                     type="button"
                     onClick={() => setActivePillar(idx)}
-                    className={`p-6 rounded-2xl text-left border transition-all duration-300 cursor-pointer flex flex-col gap-3 ${
+                    className={`p-6 rounded-2xl text-left border transition-all duration-300 cursor-pointer flex flex-col gap-2.5 ${
                       isActive
                         ? 'bg-[#171720] border-[#B65CFF]/60 shadow-xl'
                         : 'bg-[#101016] border-[#F5F3F8]/5 hover:border-[#F5F3F8]/20 text-[#A5A2B2]'
@@ -272,12 +309,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
 
             {/* Active Pillar Deep Detail Showcase */}
-            <div className="lg:col-span-7 bg-[#101016] border border-[#F5F3F8]/10 rounded-3xl p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
-              <div 
-                className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none opacity-20 blur-3xl"
-                style={{ background: `radial-gradient(circle, ${pillars[activePillar].accentColor} 0%, transparent 70%)` }}
-              />
-
+            <div className="lg:col-span-7 bg-[#101016] border border-[#F5F3F8]/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
               <div className="space-y-6 relative z-10">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#171720] border border-white/10 text-xs font-mono text-[#B65CFF]">
                   <span>FORMORA CORE CAPABILITY</span>
@@ -328,7 +360,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ================================================== */}
       {/* SECTION 4: SELECTED WORK (Editorial Portfolio)     */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 bg-[#0A0A0E] border-t border-[#F5F3F8]/10 relative">
+      <section className="py-20 sm:py-28 bg-[#0A0A0E] border-b border-[#F5F3F8]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-[#F5F3F8]/10">
@@ -346,7 +378,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <span className="text-xs text-[#A5A2B2] max-w-xs">
-                As a new studio, we showcase clearly labeled concept studies demonstrating our creative caliber and technical rigor.
+                As a new studio, we showcase clearly labeled concept studies demonstrating our creative caliber and technical craft.
               </span>
               <button
                 type="button"
@@ -360,7 +392,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           {/* Alternating Editorial Portfolio Showcase */}
-          <div className="space-y-20">
+          <div className="space-y-16 sm:space-y-20">
             {PROJECTS.map((project, idx) => {
               const isEven = idx % 2 === 0;
               return (
@@ -368,14 +400,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   key={project.id}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
                 >
-                  {/* Visual Preview Frame */}
+                  {/* Interactive Visual Preview Frame */}
                   <div className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div 
-                      onClick={() => onOpenProject(project.slug)}
-                      className="cursor-pointer group"
-                    >
-                      <ProjectMockupFrame project={project} />
-                    </div>
+                    <ProjectMockupFrame project={project} />
                   </div>
 
                   {/* Project Metadata & Brief */}
@@ -401,8 +428,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       {project.tagline}
                     </p>
 
-                    <div className="py-2">
-                      <span className="text-xs font-mono text-neutral-400 block mb-2 uppercase">
+                    <div className="py-1">
+                      <span className="text-xs font-mono text-neutral-400 block mb-1.5 uppercase">
                         Creative Challenge
                       </span>
                       <p className="text-xs text-[#A5A2B2] leading-relaxed line-clamp-3">
@@ -410,7 +437,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       </p>
                     </div>
 
-                    {/* Services Tags (Clean typography with separators, compliant with Zero-Pill) */}
+                    {/* Services Tags */}
                     <div className="flex flex-wrap items-center gap-2 text-xs text-[#A5A2B2] pt-2 border-t border-[#F5F3F8]/10">
                       {project.services.slice(0, 3).map((s, i) => (
                         <React.Fragment key={s}>
@@ -440,87 +467,85 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ================================================== */}
-      {/* SECTION 5: SERVICES OVERVIEW                       */}
+      {/* SECTION 5: SERVICES OVERVIEW (All 6 Disciplines)   */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 relative">
+      <section className="py-20 sm:py-28 relative border-b border-[#F5F3F8]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-[#F5F3F8]/10">
             <div>
-              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
-                WHAT WE DO
+              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2 font-medium">
+                PRACTICE AREAS
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F3F8] tracking-tight">
                 Interconnected Digital Services
               </h2>
             </div>
             <p className="text-sm text-[#A5A2B2] max-w-md">
-              Led by bespoke website design and engineering, complemented by full-suite branding and growth marketing.
+              Led by bespoke website design and engineering, supported by brand identity, copywriting, and creator campaigns.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {SERVICES.map((service) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES.map((service, idx) => (
               <div
                 key={service.slug}
-                className={`p-8 sm:p-10 rounded-3xl border flex flex-col justify-between transition-all duration-300 relative overflow-hidden group ${
+                className={`p-7 rounded-3xl border flex flex-col justify-between transition-all duration-300 relative overflow-hidden group hover:-translate-y-1 ${
                   service.isPrimary
-                    ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-2xl'
-                    : 'bg-[#101016] border-[#F5F3F8]/10 hover:border-[#F5F3F8]/30'
+                    ? 'bg-[#12121A] border-[#B65CFF]/40 shadow-xl'
+                    : 'bg-[#101016] border-[#F5F3F8]/10 hover:border-[#B65CFF]/30'
                 }`}
               >
                 {service.isPrimary && (
-                  <div className="absolute top-6 right-6">
-                    <span className="text-[10px] font-mono tracking-wider px-3 py-1 rounded-full bg-[#B65CFF]/15 border border-[#B65CFF]/40 text-[#B65CFF] uppercase font-semibold">
-                      PRIMARY DISCIPLINE
+                  <div className="absolute top-5 right-5">
+                    <span className="text-[9px] font-mono tracking-wider px-2.5 py-0.5 rounded-full bg-[#B65CFF]/15 border border-[#B65CFF]/40 text-[#B65CFF] uppercase font-semibold">
+                      PRIMARY
                     </span>
                   </div>
                 )}
 
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   <span className="text-xs font-mono text-[#B65CFF] tracking-wider uppercase">
-                    SERVICE // 0{SERVICES.indexOf(service) + 1}
+                    0{idx + 1}
                   </span>
 
-                  <h3 className="text-2xl font-bold text-[#F5F3F8] tracking-tight">
+                  <h3 className="text-xl font-bold text-[#F5F3F8] tracking-tight">
                     {service.title}
                   </h3>
 
-                  <p className="text-sm text-[#A5A2B2] leading-relaxed">
+                  <p className="text-xs text-[#A5A2B2] leading-relaxed line-clamp-2">
                     {service.tagline}
                   </p>
 
-                  <div className="pt-4 border-t border-[#F5F3F8]/10 space-y-2">
-                    <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-2">
-                      Key Capabilities
+                  <div className="pt-3 border-t border-[#F5F3F8]/10 space-y-1.5">
+                    <span className="text-[10px] font-mono text-neutral-400 uppercase block mb-1">
+                      Key Deliverables
                     </span>
-                    <ul className="space-y-2">
-                      {service.capabilities.slice(0, 3).map((cap) => (
-                        <li key={cap.name} className="flex items-start gap-2 text-xs text-[#A5A2B2]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B65CFF] mt-1 shrink-0" />
-                          <span>
-                            <strong className="text-[#F5F3F8] font-medium">{cap.name}:</strong> {cap.description}
-                          </span>
+                    <ul className="space-y-1">
+                      {service.deliverables.slice(0, 3).map((item) => (
+                        <li key={item} className="flex items-start gap-1.5 text-[11px] text-[#A5A2B2]">
+                          <span className="w-1 h-1 rounded-full bg-[#B65CFF] mt-1.5 shrink-0" />
+                          <span className="line-clamp-1">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                <div className="pt-8 border-t border-[#F5F3F8]/10 flex items-center justify-between mt-8">
+                <div className="pt-6 border-t border-[#F5F3F8]/10 flex items-center justify-between mt-6">
                   <button
                     type="button"
                     onClick={() => onOpenService(service.slug)}
-                    className="inline-flex items-center gap-2 text-xs font-semibold text-[#F5F3F8] hover:text-[#B65CFF] transition-colors group"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F5F3F8] hover:text-[#B65CFF] transition-colors group cursor-pointer"
                   >
-                    <span>SERVICE DETAILS & FAQS</span>
+                    <span>PRACTICE SPECS</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </button>
 
                   <button
                     type="button"
                     onClick={() => onNavigate('/contact')}
-                    className="text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors"
+                    className="text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors cursor-pointer"
                   >
                     INQUIRE →
                   </button>
@@ -535,11 +560,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ================================================== */}
       {/* SECTION 6: PROCESS (4-Stage Sequence)              */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 bg-[#0A0A0E] border-y border-[#F5F3F8]/10 relative">
+      <section className="py-20 sm:py-28 bg-[#0A0A0E] border-b border-[#F5F3F8]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2 font-medium">
               METHODOLOGY
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F3F8] tracking-tight">
@@ -550,7 +575,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               {
                 step: '01',
@@ -597,7 +622,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-[#F5F3F8]/10 text-[11px] font-mono text-[#A5A2B2]">
-                  Milestone Gate Review
+                  Milestone Review Gate
                 </div>
               </div>
             ))}
@@ -607,14 +632,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ================================================== */}
-      {/* SECTION 7: WHY FORMORA (Credible Operating Ethos)  */}
+      {/* SECTION 7: WHY FORMORA (Operating Ethos)           */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 relative">
+      <section className="py-20 sm:py-28 relative border-b border-[#F5F3F8]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
             <div className="lg:col-span-5">
-              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2">
+              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-2 font-medium">
                 OPERATING PRINCIPLES
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F3F8] tracking-tight">
@@ -623,7 +648,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
             <div className="lg:col-span-7">
               <p className="text-base text-[#A5A2B2] leading-relaxed">
-                We are an independent studio building our legacy on precision and results. No inflated team overhead, no fabricated vanity metrics, and no boilerplate templates. Just dedicated creative and technical craft.
+                We are an independent studio building our reputation on precision and results. No inflated team overhead, no fabricated vanity metrics, and no boilerplate templates. Just dedicated creative and technical craft.
               </p>
             </div>
           </div>
@@ -634,7 +659,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 key={op.number}
                 className="p-6 rounded-2xl bg-[#101016] border border-[#F5F3F8]/5 hover:border-[#B65CFF]/20 transition-all duration-300"
               >
-                <span className="text-xs font-mono text-[#B65CFF] block mb-3">
+                <span className="text-xs font-mono text-[#B65CFF] block mb-3 font-medium">
                   PRINCIPLE // {op.number}
                 </span>
                 <h4 className="text-lg font-bold text-[#F5F3F8] mb-2">
@@ -653,14 +678,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ================================================== */}
       {/* SECTION 8: STUDIO STATEMENT                        */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 bg-[#0E0E14] border-t border-[#F5F3F8]/10 text-center relative overflow-hidden">
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
-            background: 'radial-gradient(circle at center, rgba(182, 92, 255, 0.2) 0%, transparent 70%)',
-          }}
-        />
-
+      <section className="py-20 sm:py-28 bg-[#0C0C12] border-b border-[#F5F3F8]/10 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="w-12 h-12 rounded-2xl bg-[#171720] border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-xl">
             <FormoraMark size={24} />
@@ -692,15 +710,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ================================================== */}
       {/* SECTION 9: FINAL CONVERSION CTA                    */}
       {/* ================================================== */}
-      <section className="py-24 sm:py-32 relative bg-[#08080B] border-t border-[#F5F3F8]/10 overflow-hidden">
-        {/* Violet radial glow */}
-        <div 
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] pointer-events-none opacity-20 blur-3xl z-0"
-          style={{ background: 'radial-gradient(circle, #B65CFF 0%, transparent 70%)' }}
-        />
-
+      <section className="py-20 sm:py-28 relative bg-[#08080B] overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-3 font-semibold">
+          <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase block mb-3 font-medium">
             INITIATE PARTNERSHIP
           </span>
 
@@ -719,7 +731,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={() => onNavigate('/contact')}
-              className="w-full sm:w-auto px-8 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 text-xs font-semibold tracking-wider text-black bg-[#F5F3F8] hover:bg-[#B65CFF] hover:text-black rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B65CFF]"
             >
               <span>START A PROJECT</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

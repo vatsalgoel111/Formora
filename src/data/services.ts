@@ -4,37 +4,41 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: 'web-design',
     title: 'Website Design & Development',
-    tagline: 'Primary Service: High-performance digital flagships that convert visitors into committed clients.',
+    tagline: 'Primary Discipline: High-velocity digital flagships engineered for distinction and conversion.',
     isPrimary: true,
     businessProblem:
-      'Most business websites are either aesthetically outdated templates or slow, bloated experiments that fail to convert traffic into qualified inquiries.',
+      'Most business websites are either aesthetically outdated templates or slow, bloated experiments that fail to communicate clear positioning.',
     overview:
-      'We design and build bespoke, modern web platforms from scratch. From custom code and interactive WebGL experiences to headless Shopify flagships and fast marketing sites, every detail is engineered for speed, mobile elegance, and commercial clarity.',
+      'We design and build bespoke, modern web platforms from scratch. From custom code and interactive WebGL experiences to headless commerce flagships and fast marketing sites, every detail is engineered for speed, mobile elegance, and commercial clarity.',
     capabilities: [
       {
-        name: 'Custom Agency & Business Flagships',
-        description: 'Bespoke corporate websites engineered with modern React, Next.js, or Vite, optimized for sub-second page loads and memorable brand presence.',
+        name: 'Website Strategy & Architecture',
+        description: 'Information architecture, user flow mapping, and commercial positioning alignment prior to design.',
+      },
+      {
+        name: 'UI/UX & Art Direction',
+        description: 'Bespoke design systems, responsive layouts, micro-interaction choreography, and accessible component libraries.',
+      },
+      {
+        name: 'Full-Stack Engineering',
+        description: 'Clean, accessible TypeScript, modern React and Vite frameworks, optimized Core Web Vitals, and responsive performance.',
       },
       {
         name: 'E-Commerce & Digital Commerce',
-        description: 'Headless Shopify and custom commerce platforms built for conversion, frictionless cart drawer flows, and seamless inventory management.',
+        description: 'Headless storefronts and custom commerce architectures built for frictionless browsing and streamlined checkouts.',
       },
       {
-        name: 'Conversion-Focused Landing Pages',
-        description: 'Dedicated single-page digital experiences built to maximize return on ad spend, product drops, and inbound marketing campaigns.',
+        name: 'Landing Pages & Campaign Sites',
+        description: 'Dedicated single-page digital experiences built to maximize inbound campaigns and brand product drops.',
       },
       {
-        name: 'Website Redesigns & Replatforming',
-        description: 'Strategic audits, architectural modernization, and complete visual overhaul of legacy websites with zero downtime or SEO regression.',
-      },
-      {
-        name: 'Ongoing Maintenance & Technical Stewardship',
-        description: 'Continuous performance monitoring, security hardening, technical updates, and iterative conversion rate optimization.',
+        name: 'Website Optimization & Stewardship',
+        description: 'Continuous performance monitoring, security hardening, technical updates, and ongoing technical evolution.',
       },
     ],
     process: [
       { step: '01', title: 'Architecture & Inbound Flow', description: 'User flow mapping, wireframing, and commercial positioning alignment.' },
-      { step: '02', title: 'Art Direction & Prototyping', description: 'High-fidelity Figma prototypes, micro-interaction design, and responsive design systems.' },
+      { step: '02', title: 'Art Direction & Prototyping', description: 'High-fidelity prototypes, micro-interaction design, and responsive design systems.' },
       { step: '03', title: 'Full-Stack Development', description: 'Clean, accessible TypeScript code, responsive layouts, and performance optimization.' },
       { step: '04', title: 'QA & Worldwide Launch', description: 'Cross-browser testing, Core Web Vitals audit, and seamless DNS cutover.' },
     ],
@@ -56,35 +60,39 @@ export const SERVICES: ServiceDetail[] = [
       },
       {
         question: 'Do you offer ongoing website support after launch?',
-        answer: 'Yes. We provide dedicated monthly maintenance retainers covering security updates, technical monitoring, content additions, and ongoing conversion optimization.',
+        answer: 'Yes. We provide ongoing technical stewardship covering security updates, technical monitoring, content additions, and performance maintenance.',
       },
     ],
   },
   {
     slug: 'branding',
-    title: 'Brand Identity & Creative Direction',
-    tagline: 'Distinctive visual identities that make your business instantly recognizable and enduring.',
+    title: 'Branding & Graphic Design',
+    tagline: 'Distinctive visual identities and graphic systems that give your business an enduring presence.',
     isPrimary: false,
     businessProblem:
-      'In crowded markets, indistinguishable visual styling forces businesses to compete on price alone. Without a coherent brand system, every touchpoint feels disjointed.',
+      'In crowded markets, indistinguishable visual styling forces businesses into commoditization. Without a coherent brand system, every touchpoint feels disjointed.',
     overview:
       'We forge comprehensive visual identities, typographic systems, brand guidelines, and collateral that give ambitious companies a distinctive voice and confident posture across digital and physical touchpoints.',
     capabilities: [
       {
-        name: 'Core Visual Identity & Monograms',
+        name: 'Brand Identity & Monograms',
         description: 'Distinctive logomarks, secondary emblems, and responsive lockups crafted with geometric precision.',
       },
       {
-        name: 'Curated Typography & Color Architecture',
+        name: 'Typography & Color Systems',
         description: 'Cohesive font pairings, custom scale tokens, and accessible palettes tuned for digital screens and print.',
       },
       {
-        name: 'Comprehensive Brand Guidelines',
-        description: 'Living brand manuals detailing layout grids, voice principles, clear space rules, and visual do-and-don’ts.',
+        name: 'Brand Guidelines Manual',
+        description: 'Living brand manuals detailing layout grids, voice principles, clear space rules, and visual application standards.',
       },
       {
-        name: 'Digital & Physical Brand Collateral',
+        name: 'Marketing Collateral & Print',
         description: 'Stationery suites, presentation decks, packaging concepts, social media design kits, and event assets.',
+      },
+      {
+        name: 'Campaign Design & Key Visuals',
+        description: 'Art-directed master graphics and visual hooks designed for multi-channel product announcements.',
       },
     ],
     process: [
@@ -98,12 +106,12 @@ export const SERVICES: ServiceDetail[] = [
       'Digital & Print Color Specification Sheet (HEX, RGB, CMYK, Pantone)',
       'Typography Licensing & Web Font Packages',
       'Social Profile & Banner Asset Suite',
-      'Comprehensive PDF Brand Guidelines Manual',
+      'Comprehensive Brand Guidelines Manual',
     ],
     faqs: [
       {
         question: 'Can you evolve an existing logo rather than starting completely over?',
-        answer: 'Absolutely. We regularly execute strategic brand refreshes that preserve equity and recognition while modernizing geometry, typography, and contrast for modern digital displays.',
+        answer: 'Absolutely. We execute strategic brand refreshes that preserve recognition while modernizing geometry, typography, and contrast for modern digital displays.',
       },
       {
         question: 'Do you provide brand voice and tone guidelines?',
@@ -113,29 +121,29 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: 'social-media',
-    title: 'Social Media Management & Content',
+    title: 'Social Media Management',
     tagline: 'Consistent, editorial-grade visual storytelling that builds an engaged, loyal community.',
     isPrimary: false,
     businessProblem:
-      'Many brands struggle to balance the relentless demand for daily social content with the discipline of maintaining premium brand aesthetics, resulting in erratic, low-quality posts.',
+      'Many brands struggle to balance the relentless demand for daily social content with the discipline of maintaining premium brand aesthetics, resulting in erratic posts.',
     overview:
       'We handle complete social media strategy, monthly content calendar production, graphic curation, and caption copywriting. We ensure your brand looks as exceptional on Instagram, LinkedIn, and X as it does on your flagship website.',
     capabilities: [
       {
-        name: 'Strategic Content Architecture',
+        name: 'Social Content Planning',
         description: 'Channel-specific content pillars designed to inform, inspire, and drive traffic to your core offers.',
       },
       {
-        name: 'Editorial Social Graphics & Layouts',
+        name: 'Content Calendars & Schedules',
+        description: 'Structured monthly visual calendars with detailed caption briefs and strategic publishing cadences.',
+      },
+      {
+        name: 'Editorial Social Graphics',
         description: 'Bespoke carousels, typographic quote cards, motion snippets, and announcement graphics.',
       },
       {
-        name: 'Short-Form Video Coordination',
-        description: 'Hook-driven Reel, TikTok, and YouTube Shorts ideation, pacing guides, and post-production editing.',
-      },
-      {
-        name: 'Publishing & Engagement Management',
-        description: 'Meticulous scheduling at peak audience times and authentic community interaction management.',
+        name: 'Publishing & Engagement Support',
+        description: 'Strategic scheduling at peak audience times and authentic community interaction management.',
       },
     ],
     process: [
@@ -162,52 +170,160 @@ export const SERVICES: ServiceDetail[] = [
     ],
   },
   {
-    slug: 'growth-marketing',
-    title: 'Growth Marketing & Campaign Coordination',
-    tagline: 'Strategic campaign management, creator-led UGC, and influencer partnerships that scale.',
+    slug: 'content-writing',
+    title: 'Content Writing & Copywriting',
+    tagline: 'Sharp, intelligent words that clarify complex ideas and compel decisive action.',
     isPrimary: false,
     businessProblem:
-      'Generic corporate ads are ignored by modern consumers. Scaling customer acquisition requires authentic human advocacy combined with disciplined conversion funnels.',
+      'Vague, jargon-filled copy undermines beautiful design. If prospective clients cannot immediately grasp what you do and why it matters, they leave.',
     overview:
-      'We orchestrate digital marketing campaigns that bridge creator authenticity and commercial rigor. From sourcing high-performing UGC creators to managing influencer whitelisting and tracking conversions, we build campaigns that generate measurable revenue.',
+      'We craft strategic website copywriting, brand messaging frameworks, editorial articles, and conversion-focused copy. Every headline, paragraph, and micro-label is written to communicate with clarity, intelligence, and commercial intent.',
     capabilities: [
       {
-        name: 'Creator-Led UGC Advertising',
-        description: 'Sourcing, vetting, and directing content creators to produce authentic, high-converting video and photo creative.',
+        name: 'Website Copywriting',
+        description: 'Comprehensive hero headlines, narrative sections, capability descriptions, and microcopy written for maximum readability.',
       },
       {
-        name: 'Influencer Campaign Coordination',
-        description: 'End-to-end influencer outreach, contract negotiation, creative brief distribution, and compliance monitoring.',
+        name: 'Brand Messaging Frameworks',
+        description: 'Core value propositions, elevator pitches, brand mission statements, and tone-of-voice playbooks.',
       },
       {
-        name: 'Growth Funnels & Conversion Audits',
-        description: 'Optimizing landing pages, email nurture sequences, and post-click journeys to maximize ad efficiency.',
+        name: 'Landing-Page Copy',
+        description: 'Conversion-engineered sales copy, objection-handling frameworks, and compelling call-to-action language.',
       },
       {
-        name: 'Performance Reporting & Attribution',
-        description: 'Clear reporting tracking return on ad spend (ROAS), cost per acquisition (CPA), and customer lifetime value.',
+        name: 'Social Media Captions',
+        description: 'Engaging, thoughtful captions crafted for LinkedIn thought leadership and Instagram visual storytelling.',
+      },
+      {
+        name: 'Editorial & Content Planning',
+        description: 'Long-form editorial articles, case-study narratives, and content strategy documentation.',
       },
     ],
     process: [
-      { step: '01', title: 'Campaign Objective & Persona', description: 'Defining target CAC thresholds, value props, and customer triggers.' },
-      { step: '02', title: 'Creator Sourcing & Briefing', description: 'Recruiting aligned creators and supplying detailed hook-and-cta scripts.' },
-      { step: '03', title: 'Creative Assembly & Launch', description: 'Iterating variants for headline hooks, music, and aspect ratios.' },
-      { step: '04', title: 'Scale & Iterative Optimization', description: 'Doubling down on winning creative angles and pruning underperformers.' },
+      { step: '01', title: 'Message Discovery', description: 'Stakeholder interviews, audience persona mapping, and value proposition extraction.' },
+      { step: '02', title: 'Tone & Voice Architecture', description: 'Establishing writing principles, terminology rules, and sample headline exploration.' },
+      { step: '03', title: 'Drafting & Hierarchy', description: 'Writing full page copy synchronized with wireframes and visual layout rhythm.' },
+      { step: '04', title: 'Refinement & Proofing', description: 'Collaborative review cycles, line-editing for brevity, and final signoff.' },
     ],
     deliverables: [
-      'Comprehensive Campaign Briefs & Hook Frameworks',
-      'Creator Rights & Licensing Agreements',
-      'Library of Ready-to-Test Video & Static Ad Variations',
-      'Live Performance & Conversion Dashboard',
+      'Complete Website Copy Deck (Headlines, Body, CTAs)',
+      'Brand Messaging Guide & Vocabulary Rules',
+      'High-Converting Landing Page Copy Templates',
+      'Editorial Style Guide',
     ],
     faqs: [
       {
-        question: 'How do you choose UGC creators?',
-        answer: 'We vet creators based on delivery authenticity, camera presence, audio quality, and demographic fit with your buyer persona, not vanity follower counts.',
+        question: 'Do you write the copy before or after the design is created?',
+        answer: 'We believe copy and design inform each other. We establish message hierarchy and key headlines upfront during architecture, and refine the prose alongside visual prototypes.',
       },
       {
-        question: 'How does Formora coordinate with our internal marketing team?',
-        answer: 'We can act as an autonomous campaign strike-team or seamlessly integrate into your existing Slack, project management, and ad accounts.',
+        question: 'Can you rewrite our existing website copy without redesigning the site?',
+        answer: 'Yes. We frequently conduct comprehensive copy audits and rewrites to sharpen positioning and boost conversion on existing platforms.',
+      },
+    ],
+  },
+  {
+    slug: 'growth-marketing',
+    title: 'Marketing Management & Growth',
+    tagline: 'Strategic campaign management and content-led growth that connect brands with buyers.',
+    isPrimary: false,
+    businessProblem:
+      'Siloed marketing tactics without cohesive creative direction lead to wasted spend and disconnected brand perception.',
+    overview:
+      'We orchestrate digital marketing strategy, campaign planning, and creative management. We align your brand aesthetics with commercial channels to ensure your marketing actively drives pipeline and long-term brand equity.',
+    capabilities: [
+      {
+        name: 'Marketing Strategy & Positioning',
+        description: 'Customer journey mapping, channel selection, competitive whitespace analysis, and growth roadmap design.',
+      },
+      {
+        name: 'Creative Campaign Planning',
+        description: 'Conceptualizing thematic product drops, seasonal pushes, and brand awareness campaigns with unified visuals.',
+      },
+      {
+        name: 'Conversion-Focused Landing Pages',
+        description: 'Dedicated post-click experiences tailored specifically to incoming traffic sources for optimal conversion.',
+      },
+      {
+        name: 'Performance Review & Optimization',
+        description: 'Transparent campaign reviews tracking engagement, inbound inquiries, and iterative creative improvements.',
+      },
+    ],
+    process: [
+      { step: '01', title: 'Audience & Channel Audit', description: 'Assessing historical performance, acquisition channels, and target buyer triggers.' },
+      { step: '02', title: 'Campaign Architecture', description: 'Developing campaign themes, messaging angles, visual assets, and landing page wireframes.' },
+      { step: '03', title: 'Asset Production & Distribution', description: 'Coordinating ad creative, copywriting, email sequences, and platform deployment.' },
+      { step: '04', title: 'Review & Refinement', description: 'Analyzing conversion data and doubling down on winning creative angles.' },
+    ],
+    deliverables: [
+      'Multi-Channel Growth Strategy Roadmap',
+      'Campaign Creative Suites (Static & Motion)',
+      'Optimized Inbound Landing Page Frameworks',
+      'Monthly Campaign Performance Review Briefs',
+    ],
+    faqs: [
+      {
+        question: 'Do you guarantee specific conversion rates or revenue increases?',
+        answer: 'No. As an honest studio, we do not make unsubstantiated or guaranteed performance claims. We focus on rigorous strategic execution, high-caliber creative assets, and disciplined testing.',
+      },
+      {
+        question: 'How do you coordinate with our internal marketing team?',
+        answer: 'We can act as an autonomous creative strike-team or seamlessly collaborate with your internal managers and agencies via structured review milestones.',
+      },
+    ],
+  },
+  {
+    slug: 'influencer-ugc',
+    title: 'Influencer Collaborations & UGC Campaigns',
+    tagline: 'Authentic creator-led storytelling and strategic partnerships that build genuine affinity.',
+    isPrimary: false,
+    businessProblem:
+      'Modern consumers ignore generic corporate advertisements. Scaling attention requires authentic creator advocacy paired with disciplined art direction.',
+    overview:
+      'We source, brief, and coordinate high-performing content creators and influencers. From conceptualizing user-generated content (UGC) ad variations to managing creator partnerships, we ensure content feels authentic while maintaining your brand’s visual standards.',
+    capabilities: [
+      {
+        name: 'Creator Discovery & Vetting',
+        description: 'Identifying and screening creators based on camera presence, authentic audience demographics, and brand alignment.',
+      },
+      {
+        name: 'UGC Campaign Concepts & Hooks',
+        description: 'Developing high-retention video formulas, opening hook scripts, demonstration angles, and lifestyle setups.',
+      },
+      {
+        name: 'Creator Briefs & Direction',
+        description: 'Providing creators with detailed creative guidelines, do-and-don’ts, product handling guides, and key talking points.',
+      },
+      {
+        name: 'Content Post-Production & Formatting',
+        description: 'Editing raw creator footage into dynamic 9:16 vertical videos with bespoke subtitles, music, and brand end-cards.',
+      },
+      {
+        name: 'Influencer Partnership Coordination',
+        description: 'Managing outreach, collaboration agreements, usage licensing terms, and content delivery timelines.',
+      },
+    ],
+    process: [
+      { step: '01', title: 'Campaign Concept & Creator Profile', description: 'Defining campaign angles, audience desires, and ideal creator traits.' },
+      { step: '02', title: 'Creator Sourcing & Outreach', description: 'Curating a tailored creator roster and finalizing collaboration terms.' },
+      { step: '03', title: 'Briefing & Production', description: 'Dispatching detailed briefs and coordinating product delivery for shooting.' },
+      { step: '04', title: 'Editing & Asset Delivery', description: 'Reviewing raw footage, editing multiple hook variations, and delivering ready-to-deploy assets.' },
+    ],
+    deliverables: [
+      'Comprehensive Creator Briefs & Script Frameworks',
+      'Creator Rights & Commercial Licensing Documentation',
+      'Library of Polished Vertical Video Assets (9:16 Format)',
+      'Hook Variation Testing Suite & Performance Guidelines',
+    ],
+    faqs: [
+      {
+        question: 'How do you vet creators for our brand?',
+        answer: 'We analyze creator delivery authenticity, production lighting, vocal clarity, and demographic resonance with your target audience, rather than relying on vanity follower counts.',
+      },
+      {
+        question: 'Who owns the rights to the created content?',
+        answer: 'All collaboration agreements include commercial usage rights structured specifically for your brand’s paid and organic channels.',
       },
     ],
   },
