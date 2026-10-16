@@ -412,7 +412,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {PROJECTS.slice(0, 1).map((project) => (
               <ScrollReveal key={project.id} delay={100}>
                 <div 
-                  className="p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-[#12121A] to-[#0A0A0E] border border-[#FF4D00]/20 hover:border-[#FF4D00]/40 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,77,0,0.08)] transition-all duration-300 ease-out shadow-2xl relative overflow-hidden group"
+                  className="p-5 sm:p-10 rounded-3xl bg-gradient-to-b from-[#12121A] to-[#0A0A0E] border border-[#FF4D00]/20 hover:border-[#FF4D00]/40 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,77,0,0.08)] transition-all duration-300 ease-out shadow-2xl relative overflow-hidden group min-w-0"
                 >
                   {/* Subtle Amber Glow Accent with breathing pulse */}
                   <div 
@@ -563,7 +563,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {PROJECTS.slice(3, 5).map((project, idx) => (
                 <ScrollReveal key={project.id} delay={100 + idx * 100}>
                   <div 
-                    className="p-6 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/40 hover:-translate-y-1.5 hover:shadow-[0_12px_36px_rgba(182,92,255,0.06)] transition-all duration-300 ease-out shadow-xl flex flex-col justify-between group h-full"
+                    className="p-5 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/40 hover:-translate-y-1.5 hover:shadow-[0_12px_36px_rgba(182,92,255,0.06)] transition-all duration-300 ease-out shadow-xl flex flex-col justify-between group h-full min-w-0"
                   >
                     <div className="space-y-5">
                       <ProjectMockupFrame project={project} />

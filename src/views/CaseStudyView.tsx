@@ -119,7 +119,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
         </ScrollReveal>
 
         {/* Primary Visual Hero Mockup */}
-        <ScrollReveal className="mb-20">
+        <ScrollReveal className="mb-20 min-w-0">
           <ProjectMockupFrame project={project} />
         </ScrollReveal>
 

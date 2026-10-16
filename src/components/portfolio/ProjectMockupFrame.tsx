@@ -29,15 +29,15 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
     switch (project.id) {
       case 'cru-communications':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E0E14] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E0E14] flex flex-col justify-between p-6 sm:p-8 select-none min-w-0">
             {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#161622] rounded-lg border border-white/5">
+            <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 border-b border-[#F5F3F8]/10 pb-4">
+              <div className="flex items-center gap-1.5 p-1 bg-[#161622] rounded-lg border border-white/5 max-w-full overflow-x-auto no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
-                    activeTab === 'primary' ? 'bg-[#FF4D00] text-white font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    activeTab === 'primary' ? 'bg-[#FF4D00] text-white font-semibold shadow-sm' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
                   Executive Portal
@@ -45,7 +45,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('secondary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'secondary' ? 'bg-[#222234] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -54,7 +54,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('details')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'details' ? 'bg-[#222234] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -62,9 +62,9 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#FF4D00] tracking-wider uppercase flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00] animate-pulse" />
-                FOUNDER & CXO BRANDING
+              <span className="text-[10px] font-mono text-[#FF4D00] tracking-wider uppercase flex items-center gap-1.5 shrink-0">
+                <MapPin className="w-3 h-3 text-[#FF4D00]" />
+                KOLKATA, INDIA
               </span>
             </div>
 
@@ -167,15 +167,15 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
 
       case 'kritivity-interiors':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#14141A] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#14141A] flex flex-col justify-between p-6 sm:p-8 select-none min-w-0">
             {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#1A1A24] rounded-lg border border-white/5">
+            <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 border-b border-[#F5F3F8]/10 pb-4">
+              <div className="flex items-center gap-1.5 p-1 bg-[#1A1A24] rounded-lg border border-white/5 max-w-full overflow-x-auto no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
-                    activeTab === 'primary' ? 'bg-[#D4A373] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    activeTab === 'primary' ? 'bg-[#D4A373] text-black font-semibold shadow-sm' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
                   Living Space
@@ -183,7 +183,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('secondary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'secondary' ? 'bg-[#262636] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -192,7 +192,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('details')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'details' ? 'bg-[#262636] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -200,7 +200,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#D4A373] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="text-[10px] font-mono text-[#D4A373] tracking-wider uppercase flex items-center gap-1.5 shrink-0">
                 <MapPin className="w-3 h-3 text-[#D4A373]" />
                 LUCKNOW, UP
               </span>
@@ -289,15 +289,15 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
 
       case 'interior-adda-05':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E1513] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E1513] flex flex-col justify-between p-6 sm:p-8 select-none min-w-0">
             {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#14201D] rounded-lg border border-white/5">
+            <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 border-b border-[#F5F3F8]/10 pb-4">
+              <div className="flex items-center gap-1.5 p-1 bg-[#14201D] rounded-lg border border-white/5 max-w-full overflow-x-auto no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
-                    activeTab === 'primary' ? 'bg-[#C8A261] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    activeTab === 'primary' ? 'bg-[#C8A261] text-black font-semibold shadow-sm' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
                   Turnkey Living
@@ -305,7 +305,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('secondary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'secondary' ? 'bg-[#1C2C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -314,7 +314,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('details')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'details' ? 'bg-[#1C2C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -322,7 +322,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#C8A261] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="text-[10px] font-mono text-[#C8A261] tracking-wider uppercase flex items-center gap-1.5 shrink-0">
                 <MapPin className="w-3 h-3 text-[#C8A261]" />
                 GUWAHATI, ASSAM
               </span>
@@ -411,23 +411,23 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
 
       case 'chunks-of-heaven':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#161214] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#161214] flex flex-col justify-between p-6 sm:p-8 select-none min-w-0">
             {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#221C20] rounded-lg border border-white/5">
+            <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 border-b border-[#F5F3F8]/10 pb-4">
+              <div className="flex items-center gap-1.5 p-1 bg-[#221C20] rounded-lg border border-white/5 max-w-full overflow-x-auto no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
-                    activeTab === 'primary' ? 'bg-[#C59B7D] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    activeTab === 'primary' ? 'bg-[#C59B7D] text-black font-semibold shadow-sm' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  Floral Wedding Cake
+                  Wedding Cake
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab('secondary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'secondary' ? 'bg-[#2E262C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -436,7 +436,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('details')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'details' ? 'bg-[#2E262C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -444,9 +444,9 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#C59B7D] tracking-wider uppercase flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-[#C59B7D]" />
-                100% EGGLESS CELEBRATION STUDIO
+              <span className="text-[10px] font-mono text-[#C59B7D] tracking-wider uppercase flex items-center gap-1.5 shrink-0">
+                <MapPin className="w-3 h-3 text-[#C59B7D]" />
+                KOLKATA, INDIA
               </span>
             </div>
 
@@ -533,15 +533,15 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
 
       case 'fairy-nest-homestay':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#111815] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#111815] flex flex-col justify-between p-6 sm:p-8 select-none min-w-0">
             {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#1A2621] rounded-lg border border-white/5">
+            <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 border-b border-[#F5F3F8]/10 pb-4">
+              <div className="flex items-center gap-1.5 p-1 bg-[#1A2621] rounded-lg border border-white/5 max-w-full overflow-x-auto no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
-                    activeTab === 'primary' ? 'bg-[#D97746] text-white font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    activeTab === 'primary' ? 'bg-[#D97746] text-white font-semibold shadow-sm' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
                   Hillside Retreat
@@ -549,7 +549,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('secondary')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'secondary' ? 'bg-[#22332C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -558,7 +558,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('details')}
-                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1.5 text-[11px] font-mono rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                     activeTab === 'details' ? 'bg-[#22332C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
@@ -566,7 +566,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#D97746] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="text-[10px] font-mono text-[#D97746] tracking-wider uppercase flex items-center gap-1.5 shrink-0">
                 <MapPin className="w-3 h-3 text-[#D97746]" />
                 SARANIA HILLS, GUWAHATI
               </span>
@@ -672,8 +672,8 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
         </div>
 
         {/* URL Pill Display */}
-        <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#09090D]/80 border border-white/5 text-[10px] font-mono text-[#A5A2B2] max-w-[260px] truncate transition-colors duration-200 group-hover:text-[#F5F3F8]">
-          <span className="text-emerald-400">🔒</span>
+        <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#09090D]/80 border border-white/5 text-[10px] font-mono text-[#A5A2B2] max-w-[170px] sm:max-w-[260px] truncate transition-colors duration-200 group-hover:text-[#F5F3F8] min-w-0">
+          <span className="text-emerald-400 shrink-0">🔒</span>
           <span className="truncate">{project.liveUrl}</span>
         </div>
 
@@ -683,14 +683,14 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           title={`Visit live website: ${project.title}`}
-          className="p-1 rounded text-[#A5A2B2] hover:text-[#B65CFF] hover:bg-white/5 hover:scale-110 active:scale-95 transition-all duration-150 cursor-pointer"
+          className="p-1 rounded text-[#A5A2B2] hover:text-[#B65CFF] hover:bg-white/5 hover:scale-110 active:scale-95 transition-all duration-150 cursor-pointer shrink-0"
         >
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
       </div>
 
       {/* Main Content Viewport with subtle hover depth */}
-      <div className="transition-transform duration-500 ease-out group-hover:scale-[1.008]">
+      <div className="w-full min-w-0 transition-transform duration-500 ease-out group-hover:scale-[1.008]">
         {renderContent()}
       </div>
     </div>

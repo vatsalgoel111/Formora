@@ -90,7 +90,7 @@ export const WorkView: React.FC<WorkViewProps> = ({
           {filteredProjects.map((project, idx) => (
             <ScrollReveal key={project.id} delay={idx * 75}>
               <div
-                className="p-6 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/40 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(182,92,255,0.06)] transition-all duration-300 ease-out shadow-xl flex flex-col justify-between group h-full"
+                className="p-5 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/40 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(182,92,255,0.06)] transition-all duration-300 ease-out shadow-xl flex flex-col justify-between group h-full min-w-0"
               >
                 <div className="space-y-5">
                   <ProjectMockupFrame project={project} />
