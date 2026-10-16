@@ -66,9 +66,35 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
             {project.title}
           </h1>
 
-          <p className="text-lg sm:text-xl text-[#A5A2B2] max-w-3xl leading-relaxed mb-8">
+          <p className="text-lg sm:text-xl text-[#A5A2B2] max-w-3xl leading-relaxed mb-6">
             {project.tagline}
           </p>
+
+          {/* Direct Live Website Action */}
+          <div className="flex flex-wrap items-center gap-3.5 mb-8">
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-[#F5F3F8] hover:bg-[#B65CFF] text-black font-bold text-xs tracking-wider inline-flex items-center gap-2 transition-all shadow-lg cursor-pointer"
+            >
+              <span>VIEW LIVE WEBSITE</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+
+            {project.socialLinks && project.socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 rounded-xl bg-[#101016] hover:bg-[#1A1A24] border border-[#F5F3F8]/10 text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>{s.label}</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            ))}
+          </div>
 
           {/* Metadata Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-[#F5F3F8]/10 text-xs">

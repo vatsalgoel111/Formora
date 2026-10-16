@@ -358,109 +358,291 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ================================================== */}
-      {/* SECTION 4: SELECTED WORK (Editorial Portfolio)     */}
+      {/* SECTION 4: SELECTED BUSINESS WEBSITES               */}
       {/* ================================================== */}
       <section className="py-20 sm:py-28 bg-[#0A0A0E] border-b border-[#F5F3F8]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-[#F5F3F8]/10">
-            <div>
-              <div className="inline-flex items-center gap-2 mb-2">
+          {/* Header as specified */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#F5F3F8]/10">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B65CFF]" />
                 <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase font-semibold">
-                  PORTFOLIO & CASE STUDIES
+                  SELECTED BUSINESS WEBSITES
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F3F8] tracking-tight">
-                Selected Work & Concepts
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3F8] tracking-tight leading-tight">
+                Digital Experiences Built for Businesses.
               </h2>
+              <p className="mt-4 text-sm sm:text-base text-[#A5A2B2] leading-relaxed max-w-2xl">
+                Explore business-focused website concepts created for brands across personal branding, interior design, celebrations, and hospitality. Each project demonstrates how thoughtful digital design can present a business professionally and make it easier for customers to connect.
+              </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <span className="text-xs text-[#A5A2B2] max-w-xs">
-                As a new studio, we showcase clearly labeled concept studies demonstrating our creative caliber and technical craft.
-              </span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 shrink-0">
               <button
                 type="button"
                 onClick={() => onNavigate('/work')}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#171720] border border-white/10 text-xs font-medium text-[#F5F3F8] hover:text-[#B65CFF] transition-colors whitespace-nowrap self-start"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#171720] hover:bg-[#20202E] border border-white/10 text-xs font-semibold text-[#F5F3F8] hover:text-[#B65CFF] transition-all whitespace-nowrap cursor-pointer shadow-lg"
               >
-                <span>VIEW WORK INDEX</span>
+                <span>VIEW ALL 5 WEBSITES</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
-          {/* Alternating Editorial Portfolio Showcase */}
-          <div className="space-y-16 sm:space-y-20">
-            {PROJECTS.map((project, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
+          {/* Editorial Portfolio Showcase */}
+          <div className="space-y-20 sm:space-y-24">
+            
+            {/* FEATURED LEAD PROJECT (CRÜ Communications) */}
+            {PROJECTS.slice(0, 1).map((project) => (
+              <div 
+                key={project.id}
+                className="p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-[#12121A] to-[#0A0A0E] border border-[#FF4D00]/20 shadow-2xl relative overflow-hidden group"
+              >
+                {/* Subtle Amber Glow Accent */}
                 <div 
-                  key={project.id}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-                >
-                  {/* Interactive Visual Preview Frame */}
-                  <div className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                  className="absolute -top-32 -right-32 w-80 h-80 rounded-full opacity-15 blur-3xl pointer-events-none"
+                  style={{ background: '#FF4D00' }}
+                />
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  {/* Left Column: Interactive Mockup Preview */}
+                  <div className="lg:col-span-7">
                     <ProjectMockupFrame project={project} />
                   </div>
 
-                  {/* Project Metadata & Brief */}
-                  <div className={`lg:col-span-5 flex flex-col gap-4 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-[#B65CFF] tracking-wider uppercase font-semibold">
-                        {project.categoryLabel}
-                      </span>
-                      <span className="text-neutral-600">·</span>
-                      <span className="text-[11px] font-mono text-[#A5A2B2] uppercase">
+                  {/* Right Column: Lead Metadata & Real Capabilities */}
+                  <div className="lg:col-span-5 flex flex-col gap-5">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className="px-2.5 py-1 rounded-full bg-[#FF4D00]/15 border border-[#FF4D00]/30 text-[11px] font-mono text-[#FF4D00] font-semibold uppercase">
                         {project.conceptLabel}
                       </span>
+                      <span className="text-neutral-600">·</span>
+                      <span className="text-xs font-mono text-[#A5A2B2]">
+                        {project.businessCategory}
+                      </span>
                     </div>
 
-                    <h3 
-                      onClick={() => onOpenProject(project.slug)}
-                      className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] hover:text-[#B65CFF] transition-colors tracking-tight cursor-pointer"
-                    >
-                      {project.title}
-                    </h3>
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F5F3F8] tracking-tight">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs font-mono text-[#A5A2B2] block mt-1">
+                        {project.clientSubtitle}
+                      </span>
+                    </div>
 
                     <p className="text-sm text-[#A5A2B2] leading-relaxed">
-                      {project.tagline}
+                      {project.description}
                     </p>
 
-                    <div className="py-1">
-                      <span className="text-xs font-mono text-neutral-400 block mb-1.5 uppercase">
-                        Creative Challenge
+                    {/* Verified Website Capabilities */}
+                    <div className="space-y-2 pt-2 border-t border-[#F5F3F8]/10">
+                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block">
+                        Verified Website Highlights
                       </span>
-                      <p className="text-xs text-[#A5A2B2] leading-relaxed line-clamp-3">
-                        {project.challenge}
-                      </p>
-                    </div>
-
-                    {/* Services Tags */}
-                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#A5A2B2] pt-2 border-t border-[#F5F3F8]/10">
-                      {project.services.slice(0, 3).map((s, i) => (
-                        <React.Fragment key={s}>
-                          <span>{s}</span>
-                          {i < 2 && <span className="text-neutral-600">·</span>}
-                        </React.Fragment>
+                      {project.verifiedFeatures.slice(0, 3).map((feat) => (
+                        <div key={feat} className="flex items-center gap-2 text-xs text-[#E5E0D8]">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#FF4D00] shrink-0" />
+                          <span>{feat}</span>
+                        </div>
                       ))}
                     </div>
 
-                    <div className="pt-2">
+                    {/* Primary Actions */}
+                    <div className="pt-3 flex flex-wrap items-center gap-4">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-xl bg-[#FF4D00] hover:bg-[#E04400] text-black font-bold text-xs tracking-wider inline-flex items-center gap-2 transition-all shadow-lg hover:shadow-[#FF4D00]/25 cursor-pointer"
+                      >
+                        <span>VIEW LIVE WEBSITE</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+
                       <button
                         type="button"
                         onClick={() => onOpenProject(project.slug)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#F5F3F8] hover:text-[#B65CFF] transition-colors group cursor-pointer"
+                        className="px-4 py-2.5 rounded-xl bg-[#171720] hover:bg-[#20202E] border border-white/10 text-xs font-medium text-[#F5F3F8] hover:text-[#FF4D00] inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <span>VIEW FULL CASE STUDY</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                        <span>Project Overview</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
+
+            {/* SUPPORTING PROJECTS (2 & 3: Interior Design Disciplines) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+              {PROJECTS.slice(1, 3).map((project) => (
+                <div 
+                  key={project.id}
+                  className="p-6 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/30 transition-all duration-300 shadow-xl flex flex-col justify-between group"
+                >
+                  <div className="space-y-5">
+                    <ProjectMockupFrame project={project} />
+
+                    <div className="flex flex-wrap items-center gap-2 text-xs">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#B65CFF]/10 border border-[#B65CFF]/20 text-[10px] font-mono text-[#B65CFF] font-semibold uppercase">
+                        {project.conceptLabel}
+                      </span>
+                      <span className="text-neutral-600">·</span>
+                      <span className="text-[11px] font-mono text-[#A5A2B2]">
+                        {project.businessCategory}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#F5F3F8] tracking-tight group-hover:text-[#B65CFF] transition-colors">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs font-mono text-neutral-400 block mt-0.5">
+                        {project.location}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-[#A5A2B2] leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    <div className="space-y-1.5 pt-2 border-t border-[#F5F3F8]/10">
+                      {project.verifiedFeatures.slice(0, 2).map((feat) => (
+                        <div key={feat} className="flex items-center gap-2 text-xs text-[#E5E0D8]">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#B65CFF] shrink-0" />
+                          <span className="line-clamp-1">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F5F3F8] hover:text-[#B65CFF] transition-colors"
+                    >
+                      <span>View Live Website</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => onOpenProject(project.slug)}
+                      className="text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors cursor-pointer"
+                    >
+                      Explore Case Study →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* SUPPORTING PROJECTS (4 & 5: Celebrations & Hospitality) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+              {PROJECTS.slice(3, 5).map((project) => (
+                <div 
+                  key={project.id}
+                  className="p-6 sm:p-8 rounded-3xl bg-[#101016] border border-[#F5F3F8]/10 hover:border-[#B65CFF]/30 transition-all duration-300 shadow-xl flex flex-col justify-between group"
+                >
+                  <div className="space-y-5">
+                    <ProjectMockupFrame project={project} />
+
+                    <div className="flex flex-wrap items-center gap-2 text-xs">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#B65CFF]/10 border border-[#B65CFF]/20 text-[10px] font-mono text-[#B65CFF] font-semibold uppercase">
+                        {project.conceptLabel}
+                      </span>
+                      <span className="text-neutral-600">·</span>
+                      <span className="text-[11px] font-mono text-[#A5A2B2]">
+                        {project.businessCategory}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#F5F3F8] tracking-tight group-hover:text-[#B65CFF] transition-colors">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs font-mono text-neutral-400 block mt-0.5">
+                        {project.location}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-[#A5A2B2] leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    <div className="space-y-1.5 pt-2 border-t border-[#F5F3F8]/10">
+                      {project.verifiedFeatures.slice(0, 2).map((feat) => (
+                        <div key={feat} className="flex items-center gap-2 text-xs text-[#E5E0D8]">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#B65CFF] shrink-0" />
+                          <span className="line-clamp-1">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F5F3F8] hover:text-[#B65CFF] transition-colors"
+                    >
+                      <span>View Live Website</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => onOpenProject(project.slug)}
+                      className="text-xs font-mono text-[#A5A2B2] hover:text-[#F5F3F8] transition-colors cursor-pointer"
+                    >
+                      Explore Case Study →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* ================================================== */}
+          {/* SECTION CTA: PROJECT INQUIRY AREA                  */}
+          {/* ================================================== */}
+          <div className="mt-20 sm:mt-24 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#12121A] via-[#161224] to-[#12121A] border border-[#B65CFF]/30 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            {/* Subtle Violet Backlight */}
+            <div 
+              className="absolute -top-24 -left-24 w-72 h-72 rounded-full opacity-20 blur-3xl pointer-events-none"
+              style={{ background: '#B65CFF' }}
+            />
+
+            <div className="max-w-2xl relative z-10">
+              <span className="text-xs font-mono tracking-widest text-[#B65CFF] uppercase font-semibold block mb-2">
+                TAILORED DIGITAL SHOWCASES
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#F5F3F8] tracking-tight">
+                Have a business in mind? Let’s build its digital presence.
+              </h3>
+              <p className="mt-2.5 text-sm sm:text-base text-[#A5A2B2] leading-relaxed">
+                From a distinctive brand website to a complete business showcase, let’s create a digital experience tailored to your goals.
+              </p>
+            </div>
+
+            <div className="relative z-10 shrink-0">
+              <button
+                type="button"
+                onClick={() => onNavigate('/contact')}
+                className="px-8 py-4 rounded-xl bg-[#F5F3F8] hover:bg-[#B65CFF] text-black font-bold text-xs tracking-wider inline-flex items-center gap-2.5 transition-all shadow-xl hover:shadow-[#B65CFF]/20 cursor-pointer"
+              >
+                <span>LET’S TALK</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
         </div>

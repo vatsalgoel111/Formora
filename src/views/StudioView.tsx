@@ -130,7 +130,7 @@ export const StudioView: React.FC<StudioViewProps> = ({ onStartProject }) => {
                 Honest Transparency
               </h4>
               <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                As a new studio, we compete on the undeniable quality of our work and upfront clarity in deliverables, pricing, and timing.
+                As a new studio, we compete on the undeniable quality of our work and upfront clarity in deliverables, scope, and timing.
               </p>
             </div>
           </div>

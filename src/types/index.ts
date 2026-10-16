@@ -13,14 +13,22 @@ export interface Project {
   clientSubtitle: string;
   category: ServiceCategory;
   categoryLabel: string;
+  businessCategory: string;
   year: string;
   isConcept: boolean;
   conceptLabel: string;
+  liveUrl: string;
   tagline: string;
+  description: string;
   challenge: string;
   solution: string;
   services: string[];
   deliverables: string[];
+  verifiedFeatures: string[];
+  location?: string;
+  heroImage?: string;
+  secondaryImage?: string;
+  socialLinks?: { label: string; url: string }[];
   colorPalette: { hex: string; name: string }[];
   typography: { role: string; family: string; description: string }[];
   visualHighlights: {

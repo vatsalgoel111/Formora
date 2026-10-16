@@ -110,7 +110,7 @@ export const ContactView: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="font-mono text-[#B65CFF] font-bold">03.</span>
-                  <span>You receive a structured Statement of Work (SOW) with fixed milestones and pricing.</span>
+                  <span>You receive a structured Statement of Work (SOW) with clear scope, milestones, and deliverables.</span>
                 </li>
               </ol>
             </div>

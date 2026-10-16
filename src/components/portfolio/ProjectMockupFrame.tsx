@@ -5,490 +5,691 @@ import {
   Smartphone, 
   Layers, 
   Check, 
-  ShoppingBag, 
-  Calendar, 
-  Sliders, 
+  ExternalLink,
+  MapPin,
   Sparkles,
-  ArrowRight
+  ArrowUpRight
 } from 'lucide-react';
 
 interface ProjectMockupFrameProps {
   project: Project;
   className?: string;
+  isCompact?: boolean;
 }
 
 export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({
   project,
   className = '',
+  isCompact = false,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>('primary');
-  const [reserved, setReserved] = useState<boolean>(false);
-  const [selectedSeason, setSelectedSeason] = useState<string>('Autumn Twilight');
-  const [activeUgcHook, setActiveUgcHook] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<'primary' | 'secondary' | 'details'>('primary');
 
   // Render bespoke editorial view based on project and activeTab
   const renderContent = () => {
     switch (project.id) {
-      case 'aurorae-skincare':
+      case 'cru-communications':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0A0A0E] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E0E14] flex flex-col justify-between p-6 sm:p-8 select-none">
             {/* Top Interactive Tabs Bar */}
             <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#14141E] rounded-lg border border-white/5">
+              <div className="flex items-center gap-1.5 p-1 bg-[#161622] rounded-lg border border-white/5">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'primary' ? 'bg-[#222232] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'primary' ? 'bg-[#FF4D00] text-white font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  Flagship Store
+                  Executive Portal
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('mobile')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'mobile' ? 'bg-[#222232] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  onClick={() => setActiveTab('secondary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'secondary' ? 'bg-[#222234] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
                   Mobile View
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('tokens')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'tokens' ? 'bg-[#222232] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  onClick={() => setActiveTab('details')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'details' ? 'bg-[#222234] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  Design Tokens
+                  Strategy Framework
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#B65CFF] tracking-wider uppercase">
-                AURAE // SYSTEM 01
+              <span className="text-[10px] font-mono text-[#FF4D00] tracking-wider uppercase flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00] animate-pulse" />
+                FOUNDER & CXO BRANDING
               </span>
             </div>
 
-            {/* TAB: Flagship Store View */}
+            {/* TAB: Primary Executive Portal */}
             {activeTab === 'primary' && (
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center my-6">
-                <div className="sm:col-span-7 flex flex-col gap-2.5">
-                  <span className="text-[10px] font-mono text-[#A5A2B2] tracking-widest uppercase">
-                    ACTIVE CELLULAR EXTRACTION · BATCH № 04
-                  </span>
-                  <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F3F8]">
-                    Bio-Enzymatic Cellular Serum
-                  </h4>
-                  <p className="text-xs text-[#A5A2B2] leading-relaxed max-w-sm">
-                    Cold-pressed alpine edelweiss stem cells suspended in a fermented squalane matrix. Formulated for cellular barrier restoration.
-                  </p>
-
-                  <div className="flex items-center gap-3 mt-1 text-xs font-mono">
-                    <span className="text-[#B65CFF]">50ML / 1.7 FL. OZ.</span>
-                    <span className="text-neutral-600">·</span>
-                    <span className="text-[#F5F3F8]">SINGLE ESTATE BOTANICALS</span>
-                  </div>
-
-                  <div className="pt-2 flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setReserved(!reserved)}
-                      className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
-                        reserved
-                          ? 'bg-[#B65CFF] text-black shadow-lg'
-                          : 'bg-[#181824] hover:bg-[#222232] text-[#F5F3F8] border border-white/10'
-                      }`}
-                    >
-                      {reserved ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>ALLOCATION RESERVED</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingBag className="w-3.5 h-3.5 text-[#B65CFF]" />
-                          <span>RESERVE ALLOCATION</span>
-                        </>
-                      )}
-                    </button>
-                    {reserved && (
-                      <span className="text-[11px] font-mono text-[#A5A2B2]">
-                        Single-Tap Checkout Flow
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Obsidian Bottle Graphic */}
-                <div className="sm:col-span-5 flex justify-center">
-                  <div className="relative w-32 h-52 rounded-2xl bg-gradient-to-b from-[#242436] via-[#14141E] to-[#0A0A0E] border border-white/20 shadow-2xl flex flex-col items-center justify-between p-4 group-hover:-translate-y-1 transition-transform">
-                    <div className="w-9 h-9 rounded-full border border-[#B65CFF]/70 flex items-center justify-center">
-                      <span className="text-[10px] font-mono text-[#B65CFF] font-bold">A</span>
+              <div className="my-auto py-6">
+                <div className="max-w-md space-y-4">
+                  {/* CRU Signature Orange Logo Badge */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#FF4D00] flex items-center justify-center shadow-lg shadow-[#FF4D00]/20">
+                      <svg viewBox="0 0 100 100" className="w-6 h-6" fill="none">
+                        <circle cx="38" cy="36" r="6" fill="#FFFFFF" />
+                        <circle cx="62" cy="36" r="6" fill="#FFFFFF" />
+                        <path d="M30 45 V 60 C 30 72 38 78 50 78 C 62 78 70 72 70 60 V 45" stroke="#FFFFFF" strokeWidth="10" strokeLinecap="round" />
+                      </svg>
                     </div>
-                    <div className="w-full text-center">
-                      <div className="w-10 h-[1px] bg-white/40 mx-auto mb-1.5" />
-                      <span className="text-[9px] font-mono tracking-widest text-[#F5F3F8] block font-bold">AURAE</span>
-                      <span className="text-[7px] font-mono text-[#A5A2B2] tracking-wider">CELLULAR RESTORATION</span>
-                    </div>
-                    <div className="w-16 h-1 bg-[#B65CFF]/80 rounded-full" />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* TAB: Mobile Viewport */}
-            {activeTab === 'mobile' && (
-              <div className="my-6 flex justify-center items-center">
-                <div className="w-64 bg-[#14141E] rounded-2xl border border-white/15 p-4 shadow-xl flex flex-col gap-3">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-2 text-[10px] font-mono text-[#A5A2B2]">
-                    <span>9:41 AM</span>
-                    <span className="text-[#B65CFF]">AURAE STORE</span>
-                  </div>
-                  <div className="h-28 bg-[#0A0A0E] rounded-lg border border-white/5 p-3 flex items-center justify-between">
                     <div>
-                      <span className="text-[11px] font-bold text-[#F5F3F8] block">Bio-Cellular Serum</span>
-                      <span className="text-[9px] text-[#B65CFF] font-mono block">Volume: 50ML · In Stock</span>
-                    </div>
-                    <div className="w-10 h-16 rounded bg-[#1C1B28] border border-white/10" />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setReserved(!reserved)}
-                    className="w-full py-2 bg-[#F5F3F8] text-black text-[11px] font-semibold rounded-lg text-center"
-                  >
-                    {reserved ? 'ALLOCATION CONFIRMED' : 'RESERVE PRODUCT'}
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* TAB: Design Tokens */}
-            {activeTab === 'tokens' && (
-              <div className="my-6 space-y-4">
-                <div className="grid grid-cols-4 gap-2">
-                  <div className="p-2.5 rounded-lg bg-[#0B0B0F] border border-white/10 text-center">
-                    <span className="text-[9px] font-mono text-[#A5A2B2] block">OBSIDIAN</span>
-                    <span className="text-[10px] font-mono text-[#F5F3F8]">#0B0B0F</span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-[#1C1B26] border border-white/10 text-center">
-                    <span className="text-[9px] font-mono text-[#A5A2B2] block">BASALT</span>
-                    <span className="text-[10px] font-mono text-[#F5F3F8]">#1C1B26</span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-[#B65CFF] text-black text-center">
-                    <span className="text-[9px] font-mono opacity-80 block font-bold">VIOLET</span>
-                    <span className="text-[10px] font-mono font-bold">#B65CFF</span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-[#F5F3F8] text-black text-center">
-                    <span className="text-[9px] font-mono opacity-80 block font-bold">CHALK</span>
-                    <span className="text-[10px] font-mono font-bold">#F5F3F8</span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-[#14141E] rounded-xl border border-white/5 space-y-2 text-xs">
-                  <div className="flex justify-between items-center text-[#A5A2B2]">
-                    <span className="font-mono">Display Face: Space Grotesk (700)</span>
-                    <span className="text-[10px] font-mono text-[#B65CFF]">TRACKING -0.02</span>
-                  </div>
-                  <div className="flex justify-between items-center text-[#A5A2B2]">
-                    <span className="font-mono">Body: Inter Regular (400)</span>
-                    <span className="text-[10px] font-mono text-[#B65CFF]">LINE HEIGHT 1.6</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Bottom Specs Bar */}
-            <div className="flex items-center justify-between border-t border-[#F5F3F8]/10 pt-3 text-[11px] text-[#A5A2B2]">
-              <span>Headless Architecture · Custom Reservation Drawer</span>
-              <span className="font-mono text-[#F5F3F8]">Art-Directed E-Commerce Flagship</span>
-            </div>
-          </div>
-        );
-
-      case 'kanso-hospitality':
-        return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0C0D12] flex flex-col justify-between p-6 sm:p-8 select-none">
-            {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#14151F] rounded-lg border border-white/5">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('primary')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'primary' ? 'bg-[#212332] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
-                  }`}
-                >
-                  Sanctuary Suite
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('reserve')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'reserve' ? 'bg-[#212332] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
-                  }`}
-                >
-                  Availability Matrix
-                </button>
-              </div>
-
-              <span className="text-[10px] font-mono text-[#D0A0FF] tracking-wider uppercase">
-                VALAIS ALPS · ELEVATION 2,400M
-              </span>
-            </div>
-
-            {/* TAB: Suite View */}
-            {activeTab === 'primary' && (
-              <div className="my-6 space-y-4">
-                <div className="border border-white/10 rounded-2xl p-5 bg-[#141520]/80">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-mono text-[#A5A2B2]">PAVILION 04 — THE CLIFF SANCTUARY</span>
-                    <span className="text-xs font-semibold text-[#D0A0FF] font-mono">SEASONAL ACCESS OPEN</span>
-                  </div>
-
-                  <div className="h-32 bg-gradient-to-r from-[#171824] via-[#222436] to-[#141520] rounded-xl border border-white/5 relative flex items-center justify-center p-4 text-center overflow-hidden">
-                    <div className="absolute inset-0 bg-grid-subtle opacity-25" />
-                    <div className="relative">
-                      <p className="text-base font-bold text-[#F5F3F8] tracking-tight">
-                        FULL-BLEED ALPINE PANORAMA
-                      </p>
-                      <span className="text-xs text-[#A5A2B2] mt-1 block">
-                        CHISELED RAW GRANITE · PRIVATE THERMAL SPRING · FIRESIDE DECK
-                      </span>
+                      <span className="text-sm font-bold tracking-tight text-[#F5F3F8] block">CRÜ Communications</span>
+                      <span className="text-[10px] font-mono text-[#FF4D00] uppercase tracking-wider">Kolkata, India · Founder Pragya Bagri</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            )}
 
-            {/* TAB: Availability Matrix */}
-            {activeTab === 'reserve' && (
-              <div className="my-6 space-y-3">
-                <div className="p-4 bg-[#141520] rounded-xl border border-white/10 space-y-3">
-                  <span className="text-[10px] font-mono text-[#A5A2B2] block uppercase font-semibold">
-                    SELECT SEASONAL EXPERIENCE
-                  </span>
-                  <div className="grid grid-cols-3 gap-2">
-                    {['Autumn Twilight', 'Winter Frost', 'Spring Solstice'].map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        onClick={() => setSelectedSeason(s)}
-                        className={`p-2 rounded-lg text-xs font-mono text-center transition-all cursor-pointer ${
-                          selectedSeason === s
-                            ? 'bg-[#222436] text-[#D0A0FF] border border-[#D0A0FF]/40 font-semibold'
-                            : 'bg-[#0E0F16] text-[#A5A2B2] border border-white/5'
-                        }`}
-                      >
-                        {s}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="pt-2 flex justify-between items-center text-xs">
-                    <span className="text-[#A5A2B2]">Guest Capacity: 2 Guests · Private Pavilion</span>
-                    <span className="text-[#D0A0FF] font-mono">Curated Inventory</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Bottom Meta */}
-            <div className="flex items-center justify-between border-t border-[#F5F3F8]/10 pt-3 text-[11px] text-[#A5A2B2]">
-              <span>Direct Sanctuary Reservation Architecture</span>
-              <span className="font-mono text-[#D0A0FF]">8 EXCLUSIVE PAVILIONS</span>
-            </div>
-          </div>
-        );
-
-      case 'verve-studios':
-        return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#07070A] flex flex-col justify-between p-6 sm:p-8 select-none">
-            {/* Top Interactive Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#12121A] rounded-lg border border-white/5">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('primary')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'primary' ? 'bg-[#1C1C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
-                  }`}
-                >
-                  Identity Grid
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('type')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'type' ? 'bg-[#1C1C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
-                  }`}
-                >
-                  Type Specimen
-                </button>
-              </div>
-
-              <span className="text-[10px] font-mono text-[#B65CFF] tracking-wider uppercase">
-                SWISS ARCHIVAL SYSTEM
-              </span>
-            </div>
-
-            {/* TAB: Identity Grid */}
-            {activeTab === 'primary' && (
-              <div className="my-6 grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-[#111118] border border-white/10 space-y-2">
-                  <span className="text-[10px] font-mono text-[#A5A2B2] block uppercase">
-                    MONOGRAPH TYPOGRAPHY
-                  </span>
-                  <h5 className="text-xl font-bold text-[#F5F3F8] tracking-tight">
-                    VERVE GROTESK
-                  </h5>
-                  <p className="text-xs text-[#A5A2B2]">
-                    High-contrast structural letterforms designed for spatial publications and architectural archives.
-                  </p>
-                  <div className="pt-2 flex gap-1.5">
-                    <div className="w-6 h-6 rounded bg-[#F5F3F8]" />
-                    <div className="w-6 h-6 rounded bg-[#16161F]" />
-                    <div className="w-6 h-6 rounded bg-[#B65CFF]" />
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#111118] border border-white/10 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-mono text-[#A5A2B2] block uppercase mb-1">
-                      PROJECT COORDINATES
+                  <h4 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#F5F3F8] leading-tight">
+                    Curate a lasting <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D00] via-[#FF854D] to-[#FAF8F5]">
+                      legacy.
                     </span>
-                    <span className="text-xs font-mono text-[#F5F3F8] block">LAT 47.3769° N</span>
-                    <span className="text-xs font-mono text-[#A5A2B2] block">LON 8.5417° E</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] font-mono text-[#B65CFF] font-semibold">ZÜRICH ARCHIVE</span>
-                  </div>
-                </div>
-              </div>
-            )}
+                  </h4>
 
-            {/* TAB: Type Specimen */}
-            {activeTab === 'type' && (
-              <div className="my-6 space-y-3 p-4 bg-[#111118] rounded-xl border border-white/10">
-                <div className="border-b border-white/10 pb-2">
-                  <span className="text-xs font-mono text-[#A5A2B2] block">DISPLAY 48PX</span>
-                  <span className="text-xl font-bold text-[#F5F3F8]">ARCHITECTURAL FORM</span>
-                </div>
-                <div>
-                  <span className="text-xs font-mono text-[#A5A2B2] block">BODY 14PX</span>
                   <p className="text-xs text-[#A5A2B2] leading-relaxed">
-                    Precision spaces constructed with cast concrete, laminated spruce timber, and brushed aluminium hardware.
+                    Helping founders, CXOs, and industry leaders curate a lasting legacy through strategic personal branding, executive LinkedIn presence, and thought leadership narratives.
                   </p>
+
+                  <div className="grid grid-cols-2 gap-2 pt-2 text-[11px] font-mono">
+                    <div className="p-2.5 rounded-lg bg-[#14141E] border border-white/5">
+                      <span className="text-[#A5A2B2] block text-[9px]">FOCUS 01</span>
+                      <span className="font-semibold text-[#F5F3F8]">Founder Presence</span>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-[#14141E] border border-white/5">
+                      <span className="text-[#A5A2B2] block text-[9px]">FOCUS 02</span>
+                      <span className="font-semibold text-[#FF4D00]">Legacy Moat</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
 
-            <div className="flex items-center justify-between border-t border-[#F5F3F8]/10 pt-3 text-[11px] text-[#A5A2B2]">
-              <span>Editorial Guidelines & Brand Collateral</span>
-              <span className="font-mono text-[#F5F3F8]">Printed Monograph & Exhibition Archive</span>
+            {/* TAB: Mobile View Simulation */}
+            {activeTab === 'secondary' && (
+              <div className="my-auto py-4 flex items-center justify-center">
+                <div className="w-56 p-4 rounded-2xl bg-[#09090D] border border-white/10 shadow-2xl flex flex-col gap-3">
+                  <div className="w-12 h-1 bg-white/20 rounded-full mx-auto" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-md bg-[#FF4D00] flex items-center justify-center text-[10px] font-bold text-white">Ü</div>
+                    <span className="text-xs font-bold text-white">CRÜ</span>
+                  </div>
+                  <span className="text-xs font-bold text-white leading-snug">Executive Advisory for Founders & CXOs</span>
+                  <p className="text-[10px] text-[#A5A2B2] leading-tight">Reputational capital, narrative strategy, and executive thought leadership.</p>
+                  <div className="p-2 rounded bg-[#161622] text-[9px] font-mono text-[#FF4D00]">
+                    Kolkata · Led by Pragya Bagri
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Strategy Framework Details */}
+            {activeTab === 'details' && (
+              <div className="my-auto py-4 space-y-3">
+                <span className="text-[10px] font-mono text-[#FF4D00] tracking-widest uppercase block">
+                  EXECUTIVE POSITIONING PILLARS
+                </span>
+                <div className="space-y-2">
+                  {project.verifiedFeatures.map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#14141E] border border-white/5 text-xs text-[#F5F3F8]">
+                      <Check className="w-3.5 h-3.5 text-[#FF4D00] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Bar: Live Link */}
+            <div className="pt-4 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-[#A5A2B2]">
+                cru-comm.netlify.app
+              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#FF4D00] hover:text-white transition-colors"
+              >
+                <span>View Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         );
 
-      case 'solace-beverage':
+      case 'kritivity-interiors':
         return (
-          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0A0A0E] flex flex-col justify-between p-6 sm:p-8 select-none">
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#14141A] flex flex-col justify-between p-6 sm:p-8 select-none">
             {/* Top Interactive Tabs Bar */}
             <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
-              <div className="flex items-center gap-1.5 p-1 bg-[#151322] rounded-lg border border-white/5">
+              <div className="flex items-center gap-1.5 p-1 bg-[#1A1A24] rounded-lg border border-white/5">
                 <button
                   type="button"
                   onClick={() => setActiveTab('primary')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'primary' ? 'bg-[#221E38] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'primary' ? 'bg-[#D4A373] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  Creator Hooks
+                  Living Space
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('funnel')}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded transition-colors ${
-                    activeTab === 'funnel' ? 'bg-[#221E38] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  onClick={() => setActiveTab('secondary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'secondary' ? 'bg-[#262636] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
                   }`}
                 >
-                  Subscription Funnel
+                  Master Suite
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('details')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'details' ? 'bg-[#262636] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Design Specs
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-[#D0A0FF] tracking-wider uppercase">
-                UGC & CONVERSION ENGINE
+              <span className="text-[10px] font-mono text-[#D4A373] tracking-wider uppercase flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-[#D4A373]" />
+                LUCKNOW, UP
               </span>
             </div>
 
-            {/* TAB: Creator Hooks View */}
+            {/* TAB: Primary Real Interior Photo */}
             {activeTab === 'primary' && (
-              <div className="my-6 grid grid-cols-3 gap-3">
-                {[
-                  { hook: '“3 O’Clock Crash?”', time: '0:03', tag: 'High Retention' },
-                  { hook: '“Zero Sugar Spike”', time: '0:02', tag: 'Core Hook' },
-                  { hook: '“Unboxing Routine”', time: '0:04', tag: 'Social Proof' },
-                ].map((item, idx) => (
-                  <button
-                    key={item.hook}
-                    type="button"
-                    onClick={() => setActiveUgcHook(idx)}
-                    className={`aspect-[9/14] rounded-xl border p-2.5 flex flex-col justify-between text-left transition-all cursor-pointer ${
-                      activeUgcHook === idx
-                        ? 'bg-[#1F1932] border-[#B65CFF] shadow-lg scale-102'
-                        : 'bg-[#141220] border-white/10 hover:border-white/20'
-                    }`}
-                  >
-                    <div className="flex justify-between items-center text-[8px] font-mono">
-                      <span className="text-[#D0A0FF]">HOOK 0{idx + 1}</span>
-                      <span className="text-[#A5A2B2]">{item.time}</span>
-                    </div>
-
-                    <div className="text-center my-auto">
-                      <span className="text-[11px] font-bold text-[#F5F3F8] leading-tight block">
-                        {item.hook}
-                      </span>
-                    </div>
-
-                    <span className="text-[8px] font-mono text-[#B65CFF] text-center font-semibold uppercase">
-                      {item.tag}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* TAB: Subscription Funnel */}
-            {activeTab === 'funnel' && (
-              <div className="my-6 p-4 bg-[#141220] rounded-xl border border-white/10 space-y-3">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-[#F5F3F8] font-bold">Multi-Pack Automated Delivery</span>
-                  <span className="text-[#B65CFF] font-mono font-bold">Flexible Cadence</span>
-                </div>
-                <div className="text-[11px] text-[#A5A2B2] space-y-1">
-                  <div>· Cold-Brewed Botanical Adaptogen Formulation</div>
-                  <div>· Pause or reschedule delivery anytime</div>
-                  <div>· Includes Formora UGC Unboxing Experience Design</div>
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.heroImage || '/images/projects/kritivity_hero.jpg'}
+                  alt="Kritivity Interiors Luxury Living Room Showcase"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#D4A373] tracking-widest uppercase">
+                    MODERN RESIDENTIAL INTERIOR
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Curated Open-Concept Living & Dining
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Bespoke acoustic wood fluting, polished marble flooring, warm cove illumination
+                  </span>
                 </div>
               </div>
             )}
 
-            <div className="flex items-center justify-between border-t border-[#F5F3F8]/10 pt-3 text-[11px] text-[#A5A2B2]">
-              <span>Creator-Led Campaign Architecture</span>
-              <span className="font-mono text-[#D0A0FF]">Multi-Format Creative Suite</span>
+            {/* TAB: Secondary Bedroom Showcase */}
+            {activeTab === 'secondary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.secondaryImage || '/images/projects/kritivity_bedroom.jpg'}
+                  alt="Kritivity Interiors Master Suite"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#D4A373] tracking-widest uppercase">
+                    MASTER SANCTUARY
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Earthy Minimalist Master Suite
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Curated textures, soft upholstered headboard, integrated ambient reading lights
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Spatial Specs */}
+            {activeTab === 'details' && (
+              <div className="my-auto py-4 space-y-3">
+                <span className="text-[10px] font-mono text-[#D4A373] tracking-widest uppercase block">
+                  INTERIOR CAPABILITIES & DELIVERABLES
+                </span>
+                <div className="space-y-2">
+                  {project.verifiedFeatures.map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#1A1A24] border border-white/5 text-xs text-[#F5F3F8]">
+                      <Check className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Bar: Live Link */}
+            <div className="pt-4 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-[#A5A2B2]">
+                kritivity-interiors.netlify.app
+              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D4A373] hover:text-white transition-colors"
+              >
+                <span>View Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        );
+
+      case 'interior-adda-05':
+        return (
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#0E1513] flex flex-col justify-between p-6 sm:p-8 select-none">
+            {/* Top Interactive Tabs Bar */}
+            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
+              <div className="flex items-center gap-1.5 p-1 bg-[#14201D] rounded-lg border border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('primary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'primary' ? 'bg-[#C8A261] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Turnkey Living
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('secondary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'secondary' ? 'bg-[#1C2C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Luxury Suite
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('details')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'details' ? 'bg-[#1C2C28] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Modular Specs
+                </button>
+              </div>
+
+              <span className="text-[10px] font-mono text-[#C8A261] tracking-wider uppercase flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-[#C8A261]" />
+                GUWAHATI, ASSAM
+              </span>
+            </div>
+
+            {/* TAB: Primary Real Interior Photo */}
+            {activeTab === 'primary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.heroImage || '/images/projects/interioradda_living.jpg'}
+                  alt="Interior Adda 05 Turnkey Interior Design"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#C8A261] tracking-widest uppercase">
+                    TURNKEY RESIDENTIAL EXECUTION
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Luxury Turnkey Interior Design Studio
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Bespoke false ceilings, modular wall paneling, and tailored lighting design
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Secondary Bedroom Showcase */}
+            {activeTab === 'secondary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.secondaryImage || '/images/projects/interioradda_bedroom.jpg'}
+                  alt="Interior Adda 05 Bedroom Design"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#C8A261] tracking-widest uppercase">
+                    MODULAR BEDROOM SYSTEMS
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Bespoke Wardrobes & Master Bedrooms
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Floor-to-ceiling glass wardrobe modules and integrated architectural vanity
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Modular Specs */}
+            {activeTab === 'details' && (
+              <div className="my-auto py-4 space-y-3">
+                <span className="text-[10px] font-mono text-[#C8A261] tracking-widest uppercase block">
+                  TURNKEY SCOPE & CAPABILITIES
+                </span>
+                <div className="space-y-2">
+                  {project.verifiedFeatures.map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#14201D] border border-white/5 text-xs text-[#F5F3F8]">
+                      <Check className="w-3.5 h-3.5 text-[#C8A261] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Bar: Live Link */}
+            <div className="pt-4 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-[#A5A2B2]">
+                interioradda.netlify.app
+              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#C8A261] hover:text-white transition-colors"
+              >
+                <span>View Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        );
+
+      case 'chunks-of-heaven':
+        return (
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#161214] flex flex-col justify-between p-6 sm:p-8 select-none">
+            {/* Top Interactive Tabs Bar */}
+            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
+              <div className="flex items-center gap-1.5 p-1 bg-[#221C20] rounded-lg border border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('primary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'primary' ? 'bg-[#C59B7D] text-black font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Floral Wedding Cake
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('secondary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'secondary' ? 'bg-[#2E262C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Chocolate Truffle
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('details')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'details' ? 'bg-[#2E262C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Studio Offerings
+                </button>
+              </div>
+
+              <span className="text-[10px] font-mono text-[#C59B7D] tracking-wider uppercase flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#C59B7D]" />
+                100% EGGLESS CELEBRATION STUDIO
+              </span>
+            </div>
+
+            {/* TAB: Primary Real Cake Photo */}
+            {activeTab === 'primary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.heroImage || '/images/projects/coh_floral_cake.jpg'}
+                  alt="Chunks of Heaven Tiered Floral Wedding Cake"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#C59B7D] tracking-widest uppercase">
+                    ARTISANAL WEDDING CAKE
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Multi-Tier Handcrafted Floral Celebration Cake
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    100% pure vegetarian & eggless formulations, handcrafted sugar flowers, gold leaf
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Secondary Chocolate Truffle */}
+            {activeTab === 'secondary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.secondaryImage || '/images/projects/coh_chocolate.jpg'}
+                  alt="Chunks of Heaven Chocolate Truffle Cake"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#C59B7D] tracking-widest uppercase">
+                    DECIDENT CHOCOLATE SIGNATURE
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Belgian Chocolate Truffle Gateau
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Silky chocolate ganache layers, dark chocolate curls, and bespoke celebratory plaque
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Studio Offerings */}
+            {activeTab === 'details' && (
+              <div className="my-auto py-4 space-y-3">
+                <span className="text-[10px] font-mono text-[#C59B7D] tracking-widest uppercase block">
+                  CELEBRATION CAPABILITIES
+                </span>
+                <div className="space-y-2">
+                  {project.verifiedFeatures.map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#221C20] border border-white/5 text-xs text-[#F5F3F8]">
+                      <Check className="w-3.5 h-3.5 text-[#C59B7D] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Bar: Live Link */}
+            <div className="pt-4 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-[#A5A2B2]">
+                chunks-of-heaven-coh.netlify.app
+              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#C59B7D] hover:text-white transition-colors"
+              >
+                <span>View Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        );
+
+      case 'fairy-nest-homestay':
+        return (
+          <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] bg-[#111815] flex flex-col justify-between p-6 sm:p-8 select-none">
+            {/* Top Interactive Tabs Bar */}
+            <div className="flex flex-wrap items-center justify-between border-b border-[#F5F3F8]/10 pb-4 gap-3">
+              <div className="flex items-center gap-1.5 p-1 bg-[#1A2621] rounded-lg border border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('primary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'primary' ? 'bg-[#D97746] text-white font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Hillside Retreat
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('secondary')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'secondary' ? 'bg-[#22332C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Breakfast Spread
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('details')}
+                  className={`px-3 py-1 text-[11px] font-mono rounded transition-colors cursor-pointer ${
+                    activeTab === 'details' ? 'bg-[#22332C] text-[#F5F3F8] font-semibold' : 'text-[#A5A2B2] hover:text-[#F5F3F8]'
+                  }`}
+                >
+                  Amenities & Map
+                </button>
+              </div>
+
+              <span className="text-[10px] font-mono text-[#D97746] tracking-wider uppercase flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-[#D97746]" />
+                SARANIA HILLS, GUWAHATI
+              </span>
+            </div>
+
+            {/* TAB: Primary Real Homestay Photo */}
+            {activeTab === 'primary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.heroImage || '/images/projects/fairynest_hero.jpg'}
+                  alt="Fairy Nest Homestay Guwahati Bedroom"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#D97746] tracking-widest uppercase">
+                    COUPLE-FRIENDLY HILLSIDE SUITE
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    1BHK, 2BHK & Penthouse Accommodations
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Attached private kitchen, spotless modern bath, high-speed Wi-Fi & hilltop calm
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Secondary Breakfast Spread Photo */}
+            {activeTab === 'secondary' && (
+              <div className="relative my-4 rounded-xl overflow-hidden border border-white/10 group/img aspect-video sm:aspect-[16/9] max-h-[260px]">
+                <img
+                  src={project.secondaryImage || '/images/projects/fairynest_breakfast.jpg'}
+                  alt="Fairy Nest Homestay Complimentary Breakfast"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono text-[#D97746] tracking-widest uppercase">
+                    HOSPITALITY TOUCHES
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    Complimentary Breakfast Spread
+                  </h4>
+                  <span className="text-[11px] text-neutral-300">
+                    Fresh morning breakfast, authentic Assam tea, and serene mountain breeze
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Amenities & Map Details */}
+            {activeTab === 'details' && (
+              <div className="my-auto py-4 space-y-3">
+                <span className="text-[10px] font-mono text-[#D97746] tracking-widest uppercase block">
+                  HOMESTAY AMENITIES & HIGHLIGHTS
+                </span>
+                <div className="space-y-2">
+                  {project.verifiedFeatures.map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#1A2621] border border-white/5 text-xs text-[#F5F3F8]">
+                      <Check className="w-3.5 h-3.5 text-[#D97746] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Bar: Live Link */}
+            <div className="pt-4 border-t border-[#F5F3F8]/10 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-[#A5A2B2]">
+                fairy-nest-homestay.netlify.app
+              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D97746] hover:text-white transition-colors"
+              >
+                <span>View Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         );
 
       default:
-        return (
-          <div className="p-8 text-center text-sm font-mono text-[#A5A2B2]">
-            {project.title}
-          </div>
-        );
+        return null;
     }
   };
 
   return (
-    <div className={`rounded-3xl border border-[#F5F3F8]/10 bg-[#101016] overflow-hidden shadow-2xl transition-all duration-300 hover:border-[#B65CFF]/35 ${className}`}>
+    <div
+      className={`relative rounded-2xl bg-[#09090D] border border-[#F5F3F8]/10 shadow-2xl overflow-hidden transition-all duration-300 hover:border-[#B65CFF]/30 ${className}`}
+    >
+      {/* Top Browser Window Header */}
+      <div className="h-10 px-4 bg-[#101016] border-b border-[#F5F3F8]/10 flex items-center justify-between">
+        {/* macOS Traffic Lights */}
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
+        </div>
+
+        {/* URL Pill Display */}
+        <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#09090D]/80 border border-white/5 text-[10px] font-mono text-[#A5A2B2] max-w-[260px] truncate">
+          <span className="text-emerald-400">🔒</span>
+          <span className="truncate">{project.liveUrl}</span>
+        </div>
+
+        {/* Direct External Link Trigger */}
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`Visit live website: ${project.title}`}
+          className="p-1 rounded text-[#A5A2B2] hover:text-[#B65CFF] hover:bg-white/5 transition-colors cursor-pointer"
+        >
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      </div>
+
+      {/* Main Content Viewport */}
       {renderContent()}
     </div>
   );

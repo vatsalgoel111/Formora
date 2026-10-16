@@ -221,7 +221,7 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({
               Ready to begin with {service.title}?
             </h3>
             <p className="text-xs sm:text-sm text-[#A5A2B2] mt-2 max-w-lg leading-relaxed">
-              Every quote is tailored directly to your technical requirements and business objectives. We respond within 24 hours.
+              Every collaboration proposal is tailored directly to your technical requirements and business objectives. We respond within 24 hours.
             </p>
           </div>
 
